@@ -1,0 +1,49 @@
+.logo {
+    font-size: 3rem;
+}
+
+.header {
+    margin: auto;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    justify-content:space-around;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.buttons{
+    list-style: none;
+    display: flex;
+    align-items: center;
+    padding: 0;
+    margin: auto;
+    flex-wrap: wrap;
+    max-width: 100%;
+}
+
+.buttons li {
+    padding: 0.3rem;
+    border-radius: 5px;
+    margin: auto;
+}
+
+form {
+    display: flex;
+    gap: 0.2rem;
+}
+
+.buttons a {
+    text-decoration: none;
+    color: black;
+    padding: 0.5em;
+    display: block;
+}
+
+.buttons a:hover{
+    color: white;
+    background: black;
+    border-radius: 5px;
+}
+
+

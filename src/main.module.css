@@ -1,0 +1,13 @@
+:root {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+html {
+    margin: 5%;
+    margin-top: 1rem;
+    padding: 0;
+}
+
+* {
+    box-sizing: border-box;
+}
