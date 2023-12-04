@@ -1,31 +1,28 @@
 import styles from "./header.module.css";
+import { Link } from "react-router-dom"
 
 
 function Header(){
-
-
-
     return (
         <>
             <div className={styles.header}> 
-            <h1 className={styles.logo}>BaculoDB</h1>
+            <h1 className={styles.logo}><Link to="/">BaculoDB</Link></h1>
             <ul className={styles.buttons}>
-                <li><a href="#">Genomes</a></li>
-                <li><a href="#">Proteins</a></li>
-                <li><a href="#">NcRNA</a></li>
-                <li><a href="#">Regulatory Elements</a></li>
-                <li><a href="#">Batch Download</a></li>
+                <li><Link to="/genome">Genomes</Link></li>
+                <li><Link to="#">Proteins</Link></li>
+                <li><Link to="#">NcRNA</Link></li>
+                <li><Link to="#">Regulatory Elements</Link></li>
+                <li><Link to="#">Batch Download</Link></li>
             </ul>
             </div>
         
             <form className={styles.searchBar}>
                 <select name="db" id="asd">
-                    <option value="db">BaculoDB ID</option>
-                    <option value="db">GenkBank ID</option>
-                    <option value="db">Species Name</option>
-                    <option value="db">Protein Name</option>
+                    <option value="db">ID / GB Accss</option>
+                    <option value="db">Species</option>
+                    <option value="db">Protein</option>
                 </select>
-                <input type="text" autofocus="autofocus" /> 
+                <input type="text" autoFocus="autofocus" /> 
                 <button>Search</button>
             </form>
         </>)

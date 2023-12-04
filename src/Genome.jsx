@@ -15,9 +15,7 @@ return (
     <li>Morphology: </li>
     <li>Lenght (bp): </li>
     <li>%GC: </li>
-
     </ul>
-    
     </>
 )
 

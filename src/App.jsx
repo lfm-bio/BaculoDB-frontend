@@ -6,22 +6,17 @@ import Genome from "./Genome"
 
 function App() {
 
-return (<>
-
-
-  <Header />
+return (
+  <>
   <BrowserRouter>
+  <Header />
   <Routes>
     <Route path="/" element={<MainContent />} />
     <Route path="/genome" element={<Genome />} />
   </Routes>
-  </BrowserRouter>
 
   <Footer />
-
-
-
-
+  </BrowserRouter>
   </>)
 }
 
