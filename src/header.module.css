@@ -1,11 +1,12 @@
 .logo {
     font-size: 3rem;
+    margin: 0;
 }
 
 .header {
     margin: auto;
     display: flex;
-    align-items: center;
+    align-items:stretch;
     gap: 0.5rem;
     justify-content:space-around;
     flex-wrap: wrap;
@@ -15,22 +16,26 @@
 .buttons{
     list-style: none;
     display: flex;
-    align-items: center;
+    justify-content:stretch;
     padding: 0;
-    margin: auto;
+    margin: 0 0 0 auto;
     flex-wrap: wrap;
-    max-width: 100%;
 }
 
 .buttons li {
     padding: 0.3rem;
-    border-radius: 5px;
     margin: auto;
 }
 
-form {
+.searchBar {
     display: flex;
     gap: 0.2rem;
+    justify-content: center;
+    padding-top: 1.5rem;
+}
+
+.searchBar input{
+    width: 50%;
 }
 
 .buttons a {
@@ -46,4 +51,8 @@ form {
     border-radius: 5px;
 }
 
-
+@media only screen and (max-width: 1000px) {
+    .buttons {
+    margin: auto;
+    }
+  }
