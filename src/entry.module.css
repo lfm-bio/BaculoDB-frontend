@@ -1,0 +1,32 @@
+.entryData {
+    list-style: none;
+    font-family: 'Courier New', Courier, monospace;
+    padding: 2rem 0;
+    margin-top: 3rem;
+    min-height: 65vh;
+}
+
+.entryData li {
+    margin-bottom: 0.8rem;
+}
+
+.orfData {
+    list-style: none;
+    font-family: 'Courier New', Courier, monospace;
+    padding: 0;
+}
+
+.table {
+    border: 2px solid black;
+    border-spacing: 25px;
+    font-family: 'Courier New', Courier, monospace;
+    padding: 0;
+    margin: auto;
+    text-align: center;
+}
+
+.tableOut {
+    overflow-x:scroll;
+    min-height: 65vh;
+    margin-top: 3rem;
+}
