@@ -1,4 +1,4 @@
-import styles from "./entry.module.css"
+import styles from "./styles/mainContent.module.css"
 
 function RegulatoryElement(){
 return (

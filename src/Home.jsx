@@ -1,7 +1,7 @@
-import styles from "./mainContent.module.css"
+import styles from "./styles/mainContent.module.css"
 
 
-function MainContent(){
+function Home(){
     return (
         <div className={styles.mainContent}>
         <h1>Last Updates:</h1>
@@ -17,4 +17,4 @@ function MainContent(){
     )
 }
 
-export default MainContent;
+export default Home;

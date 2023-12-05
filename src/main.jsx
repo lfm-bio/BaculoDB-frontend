@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
-import syles from "./main.module.css"
+import syles from "./styles/main.module.css"
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(

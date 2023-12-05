@@ -1,4 +1,4 @@
-import styles from "./entry.module.css"
+import styles from "./styles/mainContent.module.css"
 
 function Baculoviridae(){
 
@@ -8,10 +8,10 @@ return (
 
   <tr>
     <th>Group</th>
-  <th>N Genomes</th>
+  <th>Genomes</th>
   <th>%GC(min/max/av)</th>
   <th>Length(min/max/av)</th>
-  <th>N Proteins/Genome(min/max/av)</th>
+  <th>Proteins/Genome(min/max/av)</th>
   </tr>
 
   <tr>

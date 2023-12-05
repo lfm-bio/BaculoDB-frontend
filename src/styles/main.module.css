@@ -11,3 +11,14 @@ html {
 * {
     box-sizing: border-box;
 }
+
+select, button, input {
+    background: white;
+    border: 1px solid black; 
+    border-radius: 3px;
+}
+
+select:hover, button:hover{
+    background-color: black;
+    color: white;
+}

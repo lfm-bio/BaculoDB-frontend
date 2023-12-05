@@ -1,7 +1,7 @@
-import Header from "./Header"
-import MainContent from "./MainContent"
-import Footer from "./Footer"
 import { BrowserRouter, Route, Routes } from "react-router-dom"
+import Header from "./Header"
+import Home from "./Home"
+import Footer from "./Footer"
 import Genome from "./Genome"
 import Protein from "./Protein"
 import RegulatoryElement from "./RegulatoryElement"
@@ -17,7 +17,7 @@ return (
   <Header />
 
   <Routes>
-    <Route path="/" element={<MainContent />} />
+    <Route path="/" element={<Home />} />
     <Route path="/genome" element={<Genome />} />
     <Route path="/protein" element={<Protein />} />
     <Route path="/regulatoryelement" element={<RegulatoryElement />} />

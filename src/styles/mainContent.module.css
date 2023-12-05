@@ -1,3 +1,17 @@
+.mainContent{
+    margin-top: 3rem;
+    min-height: 65vh;
+}
+
+.mainContent ul{
+    list-style: square;
+    padding: 0 1rem;
+}
+.mainContent li{
+    margin-top: 1rem;
+    font-weight: bold;
+}
+
 .entryData {
     list-style: none;
     font-family: 'Courier New', Courier, monospace;
@@ -30,3 +44,10 @@
     min-height: 65vh;
     margin-top: 3rem;
 }
+
+@media only screen and (max-width: 574px) {
+    .mainContent {
+    margin-top: 2rem;
+    }
+  }
+
