@@ -9,6 +9,7 @@ import RegulatoryElement from "./components/RegulatoryElement";
 import NcRNA from "./components/NcRNA";
 import Ori from "./components/Ori";
 import Baculoviridae from "./components/Baculoviridae";
+import SearchResult from "./components/SearchResult";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <div className={styles.mainContent}>
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/search" element={<SearchResult />} />
             <Route path="/genome" element={<Genome />} />
             <Route path="/protein" element={<Protein />} />
             <Route path="/regulatoryelement" element={<RegulatoryElement />} />

@@ -21,8 +21,9 @@
 
 .orfData {
   list-style: none;
-  font-family: "Courier New", Courier, monospace;
+  /* font-family: "Courier New", Courier, monospace; */
   padding: 0;
+  padding-left: 1rem;
 }
 
 .table {
@@ -40,8 +41,26 @@
   margin-top: 3rem;
 }
 
+.searchResult {
+  list-style: none;
+  margin-left: 4rem;
+}
+
+.searchElement h3 {
+  margin-bottom: 0px;
+  padding: 0px;
+}
+.searchElement p {
+  margin: 0.2rem;
+  padding: 0px;
+}
+
 @media only screen and (max-width: 574px) {
   .mainContent {
     margin-top: 2rem;
+  }
+
+  .searchResult {
+    margin-left: auto;
   }
 }
