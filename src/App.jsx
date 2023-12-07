@@ -10,6 +10,7 @@ import NcRNA from "./components/NcRNA";
 import Ori from "./components/Ori";
 import Baculoviridae from "./components/Baculoviridae";
 import SearchResult from "./components/SearchResult";
+import Working from "./components/Working";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
             <Route path="/ncrna" element={<NcRNA />} />
             <Route path="/ori" element={<Ori />} />
             <Route path="/baculoviridae" element={<Baculoviridae />} />
+            <Route path="/working" element={<Working />} />
           </Routes>
         </div>
 

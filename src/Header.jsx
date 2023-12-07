@@ -40,13 +40,13 @@ function Header() {
             <Link to="/genome">Orthology Groups</Link>
           </li>
           <li>
-            <Link to="regulatoryelements">Regulatory Elements</Link>
+            <Link to="/regulatoryelement">Regulatory Elements</Link>
           </li>
           <li>
-            <Link to="ori">ORIs</Link>
+            <Link to="/ori">ORIs</Link>
           </li>
           <li>
-            <Link to="ncrna">ncRNA</Link>
+            <Link to="/ncrna">ncRNA</Link>
           </li>
           <li>
             <Link to="#">Subcellular Localization</Link>
