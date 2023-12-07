@@ -1,6 +1,12 @@
 .mainContent{
     margin-top: 3rem;
     min-height: 65vh;
+    background-image: url("../img/unq-logo.jpg");
+    background-position: center;
+    background-size: contain;
+    background-repeat: repeat-y;
+    background-color: rgba(255,255,255,0.85);
+    background-blend-mode: lighten;
 }
 
 .mainContent ul{
