@@ -1,63 +1,63 @@
 .logo {
-    font-size: 3rem;
-    margin: 0;
+  font-size: 3rem;
+  margin: 0;
 }
 
-.logo a{
-    text-decoration: none;
-    color: black;
+.logo a {
+  text-decoration: none;
+  color: black;
 }
 
 .header {
-    margin: auto;
-    display: flex;
-    align-items:stretch;
-    gap: 0.5rem;
-    justify-content:space-around;
-    flex-wrap: wrap;
-    gap: 2rem;
+  margin: auto;
+  display: flex;
+  align-items: stretch;
+  gap: 0.5rem;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 2rem;
 }
 
-.buttons{
-    list-style: none;
-    display: flex;
-    justify-content:stretch;
-    padding: 0;
-    margin: 0 0 0 auto;
-    flex-wrap: wrap;
+.buttons {
+  list-style: none;
+  display: flex;
+  justify-content: stretch;
+  padding: 0;
+  margin: 0 0 0 auto;
+  flex-wrap: wrap;
 }
 
 .buttons li {
-    padding: 0.3rem;
-    margin: auto;
+  padding: 0.3rem;
+  margin: auto;
 }
 
 .searchBar {
-    display: flex;
-    gap: 0.2rem;
-    justify-content: center;
-    padding-top: 1.5rem;
+  display: flex;
+  gap: 0.2rem;
+  justify-content: center;
+  padding-top: 1.5rem;
 }
 
-.searchBar input{
-    width: 50%;
+.searchBar input {
+  width: 50%;
 }
 
 .buttons a {
-    text-decoration: none;
-    color: black;
-    padding: 0.5em;
-    display: block;
+  text-decoration: none;
+  color: black;
+  padding: 0.5em;
+  display: block;
 }
 
-.buttons a:hover{
-    color: white;
-    background: black;
-    border-radius: 5px;
+.buttons a:hover {
+  color: white;
+  background: black;
+  border-radius: 5px;
 }
 
 @media only screen and (max-width: 1000px) {
-    .buttons {
+  .buttons {
     margin: auto;
-    }
   }
+}

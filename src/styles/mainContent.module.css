@@ -1,59 +1,47 @@
-.mainContent{
-    margin-top: 3rem;
-    min-height: 65vh;
-    background-image: url("../img/unq-logo.jpg");
-    background-position: center;
-    background-size: contain;
-    background-repeat: repeat-y;
-    background-color: rgba(255,255,255,0.85);
-    background-blend-mode: lighten;
+.home ul {
+  list-style: square;
+  padding: 0 1rem;
 }
-
-.mainContent ul{
-    list-style: square;
-    padding: 0 1rem;
-}
-.mainContent li{
-    margin-top: 1rem;
-    font-weight: bold;
+.home li {
+  margin-top: 1rem;
+  font-weight: bold;
 }
 
 .entryData {
-    list-style: none;
-    font-family: 'Courier New', Courier, monospace;
-    padding: 2rem 0;
-    margin-top: 3rem;
-    min-height: 65vh;
+  list-style: none;
+  font-family: "Courier New", Courier, monospace;
+  padding: 2rem 0;
+  margin-top: 3rem;
+  min-height: 65vh;
 }
 
 .entryData li {
-    margin-bottom: 0.8rem;
+  margin-bottom: 0.8rem;
 }
 
 .orfData {
-    list-style: none;
-    font-family: 'Courier New', Courier, monospace;
-    padding: 0;
+  list-style: none;
+  font-family: "Courier New", Courier, monospace;
+  padding: 0;
 }
 
 .table {
-    border: 2px solid black;
-    border-spacing: 25px;
-    font-family: 'Courier New', Courier, monospace;
-    padding: 0;
-    margin: auto;
-    text-align: center;
+  border: 2px solid black;
+  border-spacing: 25px;
+  font-family: "Courier New", Courier, monospace;
+  padding: 0;
+  margin: auto;
+  text-align: center;
 }
 
 .tableOut {
-    overflow-x:scroll;
-    min-height: 65vh;
-    margin-top: 3rem;
+  overflow-x: scroll;
+  min-height: 65vh;
+  margin-top: 3rem;
 }
 
 @media only screen and (max-width: 574px) {
-    .mainContent {
+  .mainContent {
     margin-top: 2rem;
-    }
   }
-
+}

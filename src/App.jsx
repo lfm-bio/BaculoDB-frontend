@@ -1,34 +1,37 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom"
-import Header from "./Header"
-import Home from "./Home"
-import Footer from "./Footer"
-import Genome from "./Genome"
-import Protein from "./Protein"
-import RegulatoryElement from "./RegulatoryElement"
-import NcRNA from "./NcRNA"
-import Ori from "./Ori"
-import Baculoviridae from "./Baculoviridae"
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import styles from "./styles/main.module.css";
+import Header from "./Header";
+import Home from "./Home";
+import Footer from "./Footer";
+import Genome from "./components/Genome";
+import Protein from "./components/Protein";
+import RegulatoryElement from "./components/RegulatoryElement";
+import NcRNA from "./components/NcRNA";
+import Ori from "./components/Ori";
+import Baculoviridae from "./components/Baculoviridae";
 
 function App() {
+  return (
+    <>
+      <BrowserRouter>
+        <Header />
 
-return (
-  <>
-  <BrowserRouter>
-  <Header />
+        <div className={styles.mainContent}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/genome" element={<Genome />} />
+            <Route path="/protein" element={<Protein />} />
+            <Route path="/regulatoryelement" element={<RegulatoryElement />} />
+            <Route path="/ncrna" element={<NcRNA />} />
+            <Route path="/ori" element={<Ori />} />
+            <Route path="/baculoviridae" element={<Baculoviridae />} />
+          </Routes>
+        </div>
 
-  <Routes>
-    <Route path="/" element={<Home />} />
-    <Route path="/genome" element={<Genome />} />
-    <Route path="/protein" element={<Protein />} />
-    <Route path="/regulatoryelement" element={<RegulatoryElement />} />
-    <Route path="/ncrna" element={<NcRNA />} />
-    <Route path="/ori" element={<Ori />} />
-    <Route path="/baculoviridae" element={<Baculoviridae />} />
-  </Routes>
-
-  <Footer />
-  </BrowserRouter>
-  </>)
+        <Footer />
+      </BrowserRouter>
+    </>
+  );
 }
 
-export default App
+export default App;
