@@ -55,6 +55,11 @@
   padding: 0px;
 }
 
+.batchDownload form {
+  display: flex;
+  gap: 0.5rem;
+}
+
 @media only screen and (max-width: 574px) {
   .mainContent {
     margin-top: 2rem;

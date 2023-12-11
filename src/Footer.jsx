@@ -6,7 +6,7 @@ function Footer() {
     <div className={styles.footer}>
       LIGBCM - UNQ
       <div>
-        Something's wrong?
+        Something's wrong?{" "}
         <Link to="mailto:asdoia@adasd.com">Send us an email</Link>
       </div>
       <div>
