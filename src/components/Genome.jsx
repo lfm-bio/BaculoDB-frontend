@@ -1,10 +1,21 @@
 import styles from "../styles/mainContent.module.css";
+import { GetAllDbs } from "../api/dbs.api";
+import { useEffect } from "react";
 
 function Genome() {
   let reference = "rorman";
 
+  useEffect(() => {
+    async function loadDbs() {
+      const res = await GetAllDbs();
+      console.log(res);
+    }
+    loadDbs();
+  }, []);
+
   return (
     <>
+      <h1>prueba</h1>
       <ul className={styles.entryData}>
         <li>Name: </li>
         <li>Organism: </li>
