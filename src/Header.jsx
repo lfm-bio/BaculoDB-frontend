@@ -3,6 +3,48 @@ import { useState } from "react";
 import styles from "./styles/header.module.css";
 
 function Header() {
+  return (
+    <>
+      <Buttons />
+      <SearchBar />
+    </>
+  );
+}
+
+function Buttons() {
+  return (
+    <div className={styles.header}>
+      <h1 className={styles.logo}>
+        <Link to="/">BaculoDB</Link>
+      </h1>
+      <ul className={styles.buttons}>
+        <li>
+          <Link to="/baculoviridae">Baculoviridae</Link>
+        </li>
+        <li>
+          <Link to="/genome">Orthology Groups</Link>
+        </li>
+        <li>
+          <Link to="/regulatoryelement">Regulatory Elements</Link>
+        </li>
+        <li>
+          <Link to="/ori">ORIs</Link>
+        </li>
+        <li>
+          <Link to="/ncrna">ncRNA</Link>
+        </li>
+        <li>
+          <Link to="#">Subcellular Localization</Link>
+        </li>
+        <li>
+          <Link to="/batchdownload">Batch Download</Link>
+        </li>
+      </ul>
+    </div>
+  );
+}
+
+function SearchBar() {
   const [searchQuery, setSearchQuery] = useState({
     query: "",
     selection: "ID",
@@ -28,35 +70,6 @@ function Header() {
 
   return (
     <>
-      <div className={styles.header}>
-        <h1 className={styles.logo}>
-          <Link to="/">BaculoDB</Link>
-        </h1>
-        <ul className={styles.buttons}>
-          <li>
-            <Link to="/baculoviridae">Baculoviridae</Link>
-          </li>
-          <li>
-            <Link to="/genome">Orthology Groups</Link>
-          </li>
-          <li>
-            <Link to="/regulatoryelement">Regulatory Elements</Link>
-          </li>
-          <li>
-            <Link to="/ori">ORIs</Link>
-          </li>
-          <li>
-            <Link to="/ncrna">ncRNA</Link>
-          </li>
-          <li>
-            <Link to="#">Subcellular Localization</Link>
-          </li>
-          <li>
-            <Link to="#">Batch Download</Link>
-          </li>
-        </ul>
-      </div>
-
       <form className={styles.searchBar} onSubmit={handleSubmit}>
         <select
           name="selection"
