@@ -1,37 +1,41 @@
 import styles from "../styles/mainContent.module.css";
-import { GetAllDbs } from "../api/dbs.api";
-import { useEffect } from "react";
+import { GetAllDbs, getGenome } from "../api/dbs.api";
+import { useEffect, useState } from "react";
 
 function Genome() {
-  let reference = "rorman";
+  const [entry, setEntry] = useState();
 
   useEffect(() => {
-    async function loadDbs() {
-      const res = await GetAllDbs();
-      console.log(res);
+    async function loadEntry() {
+      const res = await getGenome();
+      console.log(res.data);
+      setEntry(res.data[0]);
     }
-    loadDbs();
+    loadEntry();
   }, []);
 
-  return (
-    <>
-      <h1>prueba</h1>
-      <ul className={styles.entryData}>
-        <li>Name: </li>
-        <li>Organism: </li>
-        <li>Organism ID: </li>
-        <li>ICTV: </li>
-        <li>{reference && `Reference: ${reference}`}</li>
-        <li>Genus: </li>
-        <li>Morphology: </li>
-        <li>Lenght (bp): </li>
-        <li>%GC: </li>
-        <li>N proteins: </li>
-        <li>Codon Usage: </li>
-        <li>Sequence: </li>
-      </ul>
-    </>
-  );
+  if (entry === undefined) {
+    return <h1>Loading...</h1>;
+  } else {
+    return (
+      <>
+        <ul className={styles.entryData}>
+          <li>{`Name: ${entry.name}`}</li>
+          <li>Organism: </li>
+          <li>{`Organism ID: ${entry.gb_accss}`}</li>
+          <li>ICTV: </li>
+          <li>{entry.reference && `Reference: ${entry.reference}`}</li>
+          <li>Genus: </li>
+          <li>Morphology: </li>
+          <li>{`Lenght (bp): ${entry.length}`}</li>
+          <li>{`%GC: ${entry.gc_perc}`}</li>
+          <li>N proteins: </li>
+          <li>Codon Usage: </li>
+          <li>Sequence: </li>
+        </ul>
+      </>
+    );
+  }
 }
 
 export default Genome;
