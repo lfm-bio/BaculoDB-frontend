@@ -1,21 +1,20 @@
 import styles from "../styles/mainContent.module.css";
 import { getGenome } from "../api/dbs.api";
-import { useEffect, useState } from "react";
-// import { useParams } from "react-router-dom";
+import { useState } from "react";
 
 function Genome() {
-  // const params = useParams();
-  // console.log(params, params.id);
   const [entry, setEntry] = useState();
 
-  useEffect(() => {
-    async function loadEntry() {
-      const res = await getGenome();
-      console.log(res.data, "ready");
-      setEntry(res.data[0]);
-    }
+  // fuera ed un effect
+  async function loadEntry() {
+    const res = await getGenome();
+    console.log(res.data, "ready");
+    setEntry(res.data[0]);
+  }
+
+  if (entry === undefined) {
     loadEntry();
-  }, []);
+  }
 
   if (entry === undefined) {
     return <h1>Loading...</h1>;
