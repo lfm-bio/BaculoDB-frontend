@@ -52,7 +52,7 @@ function SearchBar() {
   function handleSubmit(event) {
     event.preventDefault();
     // console.log(searchQuery);
-    console.log(searchQuery, "submit");
+    console.log(searchQuery, "onSubmit");
   }
 
   function handleSearch(event) {

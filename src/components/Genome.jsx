@@ -4,16 +4,17 @@ import { useState } from "react";
 
 function Genome() {
   const [entry, setEntry] = useState();
+  let searchQuery = "AP006270";
 
   // fuera ed un effect
-  async function loadEntry() {
-    const res = await getGenome();
-    console.log(res.data, "ready");
+  async function loadEntry(searchQuery) {
+    const res = await getGenome(searchQuery);
+    console.log(res.data, "loadEntry");
     setEntry(res.data[0]);
   }
 
   if (entry === undefined) {
-    loadEntry();
+    loadEntry(searchQuery);
   }
 
   if (entry === undefined) {
