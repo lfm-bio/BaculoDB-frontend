@@ -45,49 +45,29 @@ function Buttons() {
 }
 
 function SearchBar() {
-  const [searchQuery, setSearchQuery] = useState({
-    query: "",
-    selection: "ID",
-  });
+  const [searchQuery, setSearchQuery] = useState("");
 
   console.log(searchQuery);
 
   function handleSubmit(event) {
     event.preventDefault();
     // console.log(searchQuery);
+    console.log(searchQuery, "submit");
   }
 
   function handleSearch(event) {
-    const { name, value } = event.target;
-
-    setSearchQuery((prevState) => {
-      return {
-        ...prevState,
-        [name]: value,
-      };
-    });
+    setSearchQuery(event.target.value);
   }
 
   return (
     <>
       <form className={styles.searchBar} onSubmit={handleSubmit}>
-        <select
-          name="selection"
-          id="selection"
-          onChange={handleSearch}
-          value={searchQuery.selection}
-        >
-          <option value="ID">ID</option>
-          <option value="species">Species</option>
-          <option value="protein">Protein</option>
-          <option value="orthologyGroup">Orthology Group</option>
-        </select>
         <input
           type="text"
           autoFocus="autofocus"
           onChange={handleSearch}
           name="query"
-          value={searchQuery.query}
+          value={searchQuery}
         />
         <button>Search</button>
       </form>

@@ -1,11 +1,11 @@
 import styles from "../styles/mainContent.module.css";
 import { getGenome } from "../api/dbs.api";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+// import { useParams } from "react-router-dom";
 
 function Genome() {
-  const params = useParams();
-  console.log(params, params.id);
+  // const params = useParams();
+  // console.log(params, params.id);
   const [entry, setEntry] = useState();
 
   useEffect(() => {
