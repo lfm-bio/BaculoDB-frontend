@@ -5,5 +5,6 @@ export const GetAllDbs = () => {
 };
 
 export const getGenome = () => {
-  return axios.get("http://localhost:8000/dbs/api/v1/dbs?search=autographa"); //devuelve array de objetos
+  return axios.get("http://localhost:8000/genome?search=AP006270"); //devuelve array de objetos
+  return axios.get("http://localhost:8000/protein?search=AP006270"); //devuelve array de objetos
 };
