@@ -51,7 +51,7 @@ function SearchBar() {
   console.log(searchQuery);
 
   function handleSubmit(event) {
-    event.preventDefault();
+    // event.preventDefault();
     // console.log(searchQuery);
     // console.log(searchQuery, "onSubmit");
     navigate(searchQuery);

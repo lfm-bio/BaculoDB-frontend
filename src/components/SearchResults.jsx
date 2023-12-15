@@ -1,47 +1,30 @@
 import styles from "../styles/mainContent.module.css";
 import { useParams } from "react-router-dom";
-
-let searchResultArray = [
-  {
-    nombre: "Adoxophyes honmai nucleopolyhedrovirus DNA",
-    length: "113220 bp",
-    id: "AP006270.1",
-  },
-  {
-    nombre: "Adoxophyes honmai nucleopolyhedrovirus DNA",
-    length: "113220 bp",
-    id: "AP006270.1",
-  },
-  {
-    nombre: "Adoxophyes honmai nucleopolyhedrovirus DNA",
-    length: "113220 bp",
-    id: "AP006270.1",
-  },
-  {
-    nombre: "Adoxophyes honmai nucleopolyhedrovirus DNA",
-    length: "113220 bp",
-    id: "AP006270.1",
-  },
-];
+import { getGenome } from "../api/dbs.api";
+import { useState } from "react";
 
 function SearchElement(props) {
   return (
     <div className={styles.searchElement}>
-      <h3>{props.nombre}</h3>
-      <p>{props.length}</p>
-      <p>{props.id}</p>
+      <h3>{props.name}</h3>
+      <div className={styles.elementDescrip}>
+        <p>Length: {props.length}</p>
+        <p>ID: {props.gb_accss}</p>
+        <p>Type: {props.entry_type}</p>
+      </div>
     </div>
   );
 }
 
-function SearchElements() {
-  const searchResults = searchResultArray.map((result, index) => {
+function SearchElements(props) {
+  const searchResults = props.entries.map((result, index) => {
     return (
       <li key={index}>
         <SearchElement
-          nombre={result.nombre}
-          id={result.id}
+          name={result.name}
+          gb_accss={result.gb_accss}
           length={result.length}
+          entry_type={result.entry_type}
         />
       </li>
     );
@@ -51,12 +34,26 @@ function SearchElements() {
 
 function SearchResults() {
   const params = useParams();
-  return (
-    <ul className={styles.searchResult}>
-      <h1>{params.id}</h1>
-      <SearchElements />
-    </ul>
-  );
+  const searchQuery = params.query;
+  const [entries, setEntries] = useState();
+
+  async function loadEntry(searchQuery) {
+    const res = await getGenome(searchQuery);
+    setEntries(res.data);
+  }
+
+  if (entries === undefined) {
+    loadEntry(searchQuery);
+    return <h1>loading...</h1>;
+  } else if (entries == false) {
+    return <h1>No entries found =(</h1>;
+  } else {
+    return (
+      <ul className={styles.searchResult}>
+        <SearchElements entries={entries} />
+      </ul>
+    );
+  }
 }
 
 export default SearchResults;

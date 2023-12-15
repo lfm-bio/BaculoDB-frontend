@@ -16,7 +16,7 @@ function App() {
         <div className={styles.mainContent}>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/:id" element={<SearchResults />} />
+            <Route path="/:query" element={<SearchResults />} />
             <Route path="/baculoviridae" element={<Baculoviridae />} />
             <Route path="/batchdownload" element={<BatchDownload />} />
           </Routes>
