@@ -1,12 +1,16 @@
 import styles from "../styles/mainContent.module.css";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { getGenome } from "../api/dbs.api";
 import { useState } from "react";
 
 function SearchElement(props) {
+  const navigate = useNavigate();
+  function handleClick() {
+    navigate(`../entry/${props.id}`);
+  }
   return (
     <div className={styles.searchElement}>
-      <h3>{props.name}</h3>
+      <h3 onClick={handleClick}>{props.name}</h3>
       <div className={styles.elementDescrip}>
         <p>Length: {props.length}</p>
         <p>ID: {props.gb_accss}</p>
@@ -21,6 +25,7 @@ function SearchElements(props) {
     return (
       <li key={index}>
         <SearchElement
+          id={result.id}
           name={result.name}
           gb_accss={result.gb_accss}
           length={result.length}

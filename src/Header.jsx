@@ -48,12 +48,7 @@ function SearchBar() {
   const [searchQuery, setSearchQuery] = useState("");
   const navigate = useNavigate();
 
-  console.log(searchQuery);
-
   function handleSubmit(event) {
-    // event.preventDefault();
-    // console.log(searchQuery);
-    // console.log(searchQuery, "onSubmit");
     navigate(searchQuery);
   }
 

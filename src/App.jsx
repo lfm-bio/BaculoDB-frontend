@@ -6,6 +6,7 @@ import Footer from "./Footer";
 import Baculoviridae from "./components/Baculoviridae";
 import SearchResults from "./components/SearchResults";
 import BatchDownload from "./components/BatchDownload";
+import Entry from "./components/Entry";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/:query" element={<SearchResults />} />
+            <Route path="/entry/:id" element={<Entry />} />
             <Route path="/baculoviridae" element={<Baculoviridae />} />
             <Route path="/batchdownload" element={<BatchDownload />} />
           </Routes>
