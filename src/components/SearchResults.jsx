@@ -1,4 +1,5 @@
 import styles from "../styles/mainContent.module.css";
+import { useParams } from "react-router-dom";
 
 let searchResultArray = [
   {
@@ -48,12 +49,14 @@ function SearchElements() {
   return searchResults;
 }
 
-function SearchResult() {
+function SearchResults() {
+  const params = useParams();
   return (
     <ul className={styles.searchResult}>
+      <h1>{params.id}</h1>
       <SearchElements />
     </ul>
   );
 }
 
-export default SearchResult;
+export default SearchResults;

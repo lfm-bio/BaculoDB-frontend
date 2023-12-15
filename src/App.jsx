@@ -3,9 +3,8 @@ import styles from "./styles/main.module.css";
 import Header from "./Header";
 import Home from "./Home";
 import Footer from "./Footer";
-import Entry from "./components/Entry";
 import Baculoviridae from "./components/Baculoviridae";
-import SearchResult from "./components/SearchResult";
+import SearchResults from "./components/SearchResults";
 import BatchDownload from "./components/BatchDownload";
 
 function App() {
@@ -17,8 +16,7 @@ function App() {
         <div className={styles.mainContent}>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/:id" element={<Entry />} />
-            <Route path="/search" element={<SearchResult />} />
+            <Route path="/:id" element={<SearchResults />} />
             <Route path="/baculoviridae" element={<Baculoviridae />} />
             <Route path="/batchdownload" element={<BatchDownload />} />
           </Routes>

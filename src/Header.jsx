@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import styles from "./styles/header.module.css";
 
@@ -46,13 +46,15 @@ function Buttons() {
 
 function SearchBar() {
   const [searchQuery, setSearchQuery] = useState("");
+  const navigate = useNavigate();
 
   console.log(searchQuery);
 
   function handleSubmit(event) {
     event.preventDefault();
     // console.log(searchQuery);
-    console.log(searchQuery, "onSubmit");
+    // console.log(searchQuery, "onSubmit");
+    navigate(searchQuery);
   }
 
   function handleSearch(event) {
