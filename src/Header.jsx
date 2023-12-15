@@ -22,10 +22,10 @@ function Buttons() {
           <Link to="/baculoviridae">Baculoviridae</Link>
         </li>
         <li>
-          <Link to="/genome">Orthology Groups</Link>
+          <Link to="#">Orthology Groups</Link>
         </li>
         <li>
-          <Link to="/regulatoryelement">Regulatory Elements</Link>
+          <Link to="/regulatoryelements">Regulatory Elements</Link>
         </li>
         <li>
           <Link to="/ori">ORIs</Link>

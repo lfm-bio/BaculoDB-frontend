@@ -6,6 +6,7 @@ import Footer from "./Footer";
 import Baculoviridae from "./components/Baculoviridae";
 import SearchResults from "./components/SearchResults";
 import BatchDownload from "./components/BatchDownload";
+import RegulatoryElements from "./components/RegulatoryElements";
 import Entry from "./components/Entry";
 
 function App() {
@@ -20,6 +21,10 @@ function App() {
             <Route path="/:query" element={<SearchResults />} />
             <Route path="/entry/:id" element={<Entry />} />
             <Route path="/baculoviridae" element={<Baculoviridae />} />
+            <Route
+              path="/regulatoryelements"
+              element={<RegulatoryElements />}
+            />
             <Route path="/batchdownload" element={<BatchDownload />} />
           </Routes>
         </div>
