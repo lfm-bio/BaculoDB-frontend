@@ -1,16 +1,14 @@
 import styles from "../styles/mainContent.module.css";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { getGenome } from "../api/dbs.api";
 import { useState } from "react";
 
 function SearchElement(props) {
-  const navigate = useNavigate();
-  function handleClick() {
-    navigate(`../entry/${props.id}`);
-  }
   return (
     <div className={styles.searchElement}>
-      <h3 onClick={handleClick}>{props.name}</h3>
+      <Link to={`../entry/${props.id}`}>
+        <h3>{props.name}</h3>
+      </Link>
       <div className={styles.elementDescrip}>
         <p>Length: {props.length}</p>
         <p>ID: {props.gb_accss}</p>
