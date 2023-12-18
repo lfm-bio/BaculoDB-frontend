@@ -1,6 +1,7 @@
 import styles from "../../styles/mainContent.module.css";
 
-function Protein() {
+function Protein(props) {
+  const entry = props.entryData;
   function OrfData() {
     return (
       <>
@@ -18,12 +19,11 @@ function Protein() {
   return (
     <>
       <ul className={styles.entryData}>
-        <li>Name: </li>
-        <li>Protein ID: </li>
+        <li>Name: {entry.name}</li>
+        <li>Protein ID: {entry.gb_accss}</li>
         <li>Organism: </li>
         <li>Organism ID</li>
-        <li>Lenght (aa): </li>
-        <li>Composition: </li>
+        <li>Lenght (aa): {entry.length}</li>
         <li>MW: </li>
         <li>PI: </li>
         <li>Subcellular Localization Signal: </li>

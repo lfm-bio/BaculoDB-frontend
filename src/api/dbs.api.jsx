@@ -1,10 +1,11 @@
 import axios from "axios";
 
-export const GetAllDbs = () => {
-  return axios.get("http://localhost:8000/dbs/api/v1/dbs/AP006270/");
-};
+export const searchByIDName = (searchQuery) => {
+  let genome = `http://localhost:8000/genome?search=${searchQuery}`;
+  let protein = `http://localhost:8000/protein?search=${searchQuery}`;
+  const promise1 = axios.get(genome);
+  const promise2 = axios.get(protein);
+  const searchData = Promise.all([promise1, promise2]);
 
-export const getGenome = (searchQuery) => {
-  return axios.get(`http://localhost:8000/genome?search=${searchQuery}`); //devuelve array de objetos
-  return axios.get("http://localhost:8000/protein?search=AP006270"); //devuelve array de objetos
+  return searchData;
 };

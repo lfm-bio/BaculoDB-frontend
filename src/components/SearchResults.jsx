@@ -1,7 +1,8 @@
 import styles from "../styles/mainContent.module.css";
 import { useParams, Link } from "react-router-dom";
-import { getGenome } from "../api/dbs.api";
-import { useState } from "react";
+import { searchByIDName } from "../api/dbs.api";
+import { useState, useEffect } from "react";
+import { getFinalArray } from "../utils";
 
 function SearchElement(props) {
   return (
@@ -40,22 +41,27 @@ function SearchResults() {
   const searchQuery = params.query;
   const [entries, setEntries] = useState();
 
-  async function loadEntry(searchQuery) {
-    const res = await getGenome(searchQuery);
-    setEntries(res.data);
-  }
+  useEffect(() => {
+    const loadEntry = async () => {
+      const res = await searchByIDName(searchQuery);
+      setEntries(res);
+    };
+    loadEntry();
+  }, []);
 
   if (entries === undefined) {
-    loadEntry(searchQuery);
     return <h1>loading...</h1>;
-  } else if (entries == false) {
-    return <h1>No entries found =(</h1>;
   } else {
-    return (
-      <ul className={styles.searchResult}>
-        <SearchElements entries={entries} />
-      </ul>
-    );
+    const resultsArray = getFinalArray(entries);
+    if (resultsArray == false) {
+      return <h1>No entries found</h1>;
+    } else {
+      return (
+        <ul className={styles.searchResult}>
+          <SearchElements entries={resultsArray} />
+        </ul>
+      );
+    }
   }
 }
 

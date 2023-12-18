@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
-import { getGenome } from "../api/dbs.api";
-import { useState } from "react";
+import { searchByIDName } from "../api/dbs.api";
+import { useState, useEffect } from "react";
+import { getFinalArray } from "../utils";
 import Genome from "./entry_types/Genome";
 import Protein from "./entry_types/Protein";
 import NcRNA from "./entry_types/NcRNA";
@@ -9,23 +10,28 @@ import RegulatoryElement from "./entry_types/RegulatoryElement";
 
 function Entry() {
   const params = useParams();
-  const [entry, setEntry] = useState();
+  const [entries, setEntries] = useState();
 
-  async function loadEntry() {
-    const res = await getGenome(params.id);
-    setEntry(res.data[0]);
-  }
-
-  if (entry === undefined) {
+  useEffect(() => {
+    const loadEntry = async () => {
+      const res = await searchByIDName(params.id);
+      setEntries(res);
+    };
     loadEntry();
+  }, []);
+
+  if (entries === undefined) {
     return <h1>Loading</h1>;
   } else {
+    const resultsArray = getFinalArray(entries);
+    const entry = resultsArray[0];
+
     switch (entry.entry_type) {
       case "genome":
         return <Genome entryData={entry} />;
       case "protein":
         return <Protein entryData={entry} />;
-      case "ori":
+      case "Ori":
         return <Ori entryData={entry} />;
       case "ncrna":
         return <NcRNA entryData={entry} />;
