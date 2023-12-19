@@ -1,4 +1,6 @@
 export const getFinalArray = (initialArray) => {
+  // in = array directly from the API
+  // out = array only with the data
   const resultsArray = [];
   for (let i = 0; i < initialArray.length; i++) {
     if (initialArray[i].data.length === 0) {

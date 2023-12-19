@@ -2,15 +2,15 @@ import styles from "../../styles/mainContent.module.css";
 
 function Protein(props) {
   const entry = props.entryData;
-  function OrfData() {
+  function OrfData(props) {
     return (
       <>
         <ul className={styles.orfData}>
           <li>
-            <b>Length(bp):</b>{" "}
+            <b>Length(bp):</b> {props.orfLength}
           </li>
           <li>
-            <b>%GC:</b>{" "}
+            <b>%GC:</b> {props.orfGcPerc}
           </li>
         </ul>
       </>
@@ -27,7 +27,7 @@ function Protein(props) {
           <b>Protein ID:</b> {entry.gb_accss}
         </li>
         <li>
-          <b>Organism:</b>{" "}
+          <b>Organism:</b> {entry.genome} ({entry.genome_name})
         </li>
         <li>
           <b>Lenght(aa):</b> {entry.length}
@@ -46,7 +46,7 @@ function Protein(props) {
             <b>ORF Data</b>
           </u>
         </li>
-        <OrfData />
+        <OrfData orfLength={entry.orf_length} orfGcPerc={entry.orf_gc_perc} />
       </ul>
     </>
   );

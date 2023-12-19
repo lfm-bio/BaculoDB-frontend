@@ -1,5 +1,4 @@
 import styles from "../../styles/mainContent.module.css";
-import { Link } from "react-router-dom";
 
 function Genome(props) {
   const entry = props.entryData;
@@ -14,9 +13,12 @@ function Genome(props) {
         </li>
         <li>
           {entry.reference && <b>Reference: </b>}
-          <Link to={`https://pubmed.ncbi.nlm.nih.gov/${entry.reference}`}>
+          <a
+            href={`https://pubmed.ncbi.nlm.nih.gov/${entry.reference}`}
+            target="_blank"
+          >
             {entry.reference && `${entry.reference}`}
-          </Link>
+          </a>
         </li>
         <li>
           <b>Genus:</b>{" "}

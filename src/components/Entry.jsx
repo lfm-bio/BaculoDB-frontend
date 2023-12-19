@@ -27,9 +27,9 @@ function Entry() {
     const entry = resultsArray[0];
 
     switch (entry.entry_type) {
-      case "genome":
+      case "Genome":
         return <Genome entryData={entry} />;
-      case "protein":
+      case "Protein":
         return <Protein entryData={entry} />;
       case "ori":
         return <Ori entryData={entry} />;
