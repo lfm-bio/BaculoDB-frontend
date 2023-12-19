@@ -22,13 +22,13 @@ function Buttons() {
           <Link to="/baculoviridae">Baculoviridae</Link>
         </li>
         <li>
-          <Link to="#">Orthology Groups</Link>
+          <Link to="/orthologygroups">Orthology Groups</Link>
         </li>
         <li>
           <Link to="/regulatoryelements">Regulatory Elements</Link>
         </li>
         <li>
-          <Link to="/ori">ORIs</Link>
+          <Link to="/oris">ORIs</Link>
         </li>
         <li>
           <Link to="/ncrna">ncRNA</Link>
