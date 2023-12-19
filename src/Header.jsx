@@ -34,7 +34,7 @@ function Buttons() {
           <Link to="/ncrna">ncRNA</Link>
         </li>
         <li>
-          <Link to="#">Subcellular Localization</Link>
+          <Link to="/subcellularlocalization">Subcellular Localization</Link>
         </li>
         <li>
           <Link to="/batchdownload">Batch Download</Link>

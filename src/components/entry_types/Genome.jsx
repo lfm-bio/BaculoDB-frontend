@@ -6,21 +6,30 @@ function Genome(props) {
   return (
     <>
       <ul className={styles.entryData}>
-        <li>Name: {entry.name}</li>
-        <li>Organism ID: {entry.gb_accss}</li>
-        <li>ICTV: </li>
         <li>
-          {entry.reference && `Reference: `}
+          <b>Name:</b> {entry.name}
+        </li>
+        <li>
+          <b>Organism ID:</b> {entry.gb_accss}
+        </li>
+        <li>
+          {entry.reference && <b>Reference: </b>}
           <Link to={`https://pubmed.ncbi.nlm.nih.gov/${entry.reference}`}>
             {entry.reference && `${entry.reference}`}
           </Link>
         </li>
-        <li>Genus: </li>
-        <li>Morphology: </li>
-        <li>Lenght (bp): {entry.length}</li>
-        <li>%GC: {entry.gc_perc}</li>
-        <li>N proteins: </li>
-        <li>Sequence: </li>
+        <li>
+          <b>Genus:</b>{" "}
+        </li>
+        <li>
+          <b>Morphology:</b>{" "}
+        </li>
+        <li>
+          <b>Lenght(bp):</b> {entry.length}
+        </li>
+        <li>
+          <b>%GC:</b> {entry.gc_perc}
+        </li>
       </ul>
     </>
   );

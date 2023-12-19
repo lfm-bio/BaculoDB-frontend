@@ -31,7 +31,7 @@ function Entry() {
         return <Genome entryData={entry} />;
       case "protein":
         return <Protein entryData={entry} />;
-      case "Ori":
+      case "ori":
         return <Ori entryData={entry} />;
       case "ncrna":
         return <NcRNA entryData={entry} />;

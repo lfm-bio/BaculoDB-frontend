@@ -1,5 +1,5 @@
 import styles from "../styles/mainContent.module.css";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { searchByIDName } from "../api/dbs.api";
 import { useState, useEffect } from "react";
 import { getFinalArray } from "../utils";
@@ -11,8 +11,8 @@ function SearchElement(props) {
         <h3>{props.name}</h3>
       </Link>
       <div className={styles.elementDescrip}>
-        <p>Length: {props.length}</p>
         <p>ID: {props.gb_accss}</p>
+        <p>Length: {props.length}</p>
         <p>Type: {props.entry_type}</p>
       </div>
     </div>
@@ -40,6 +40,7 @@ function SearchResults() {
   const params = useParams();
   const searchQuery = params.query;
   const [entries, setEntries] = useState();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const loadEntry = async () => {
@@ -53,8 +54,10 @@ function SearchResults() {
     return <h1>loading...</h1>;
   } else {
     const resultsArray = getFinalArray(entries);
-    if (resultsArray == false) {
+    if (resultsArray.length === 0) {
       return <h1>No entries found</h1>;
+    } else if (resultsArray.length === 1) {
+      navigate(`../entry/${resultsArray[0].id}`);
     } else {
       return (
         <ul className={styles.searchResult}>

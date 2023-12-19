@@ -6,11 +6,12 @@ function Protein(props) {
     return (
       <>
         <ul className={styles.orfData}>
-          <li>Length (bp): </li>
-          <li>%GC: </li>
-          <li>Prs: </li>
-          <li>Ter: </li>
-          <li>ORF Sequence: </li>
+          <li>
+            <b>Length(bp):</b>{" "}
+          </li>
+          <li>
+            <b>%GC:</b>{" "}
+          </li>
         </ul>
       </>
     );
@@ -19,20 +20,33 @@ function Protein(props) {
   return (
     <>
       <ul className={styles.entryData}>
-        <li>Name: {entry.name}</li>
-        <li>Protein ID: {entry.gb_accss}</li>
-        <li>Organism: </li>
-        <li>Organism ID</li>
-        <li>Lenght (aa): {entry.length}</li>
-        <li>MW: </li>
-        <li>PI: </li>
-        <li>Subcellular Localization Signal: </li>
-        <li>Function: </li>
-        <li>Domains: </li>
-        <li>Orthology Group: </li>
-        <li>ORF Data: </li>
+        <li>
+          <b>Name:</b> {entry.name}
+        </li>
+        <li>
+          <b>Protein ID:</b> {entry.gb_accss}
+        </li>
+        <li>
+          <b>Organism:</b>{" "}
+        </li>
+        <li>
+          <b>Lenght(aa):</b> {entry.length}
+        </li>
+        <li>
+          <b>MW:</b>{" "}
+        </li>
+        <li>
+          <b>Function:</b>{" "}
+        </li>
+        <li>
+          <b>Orthology Group:</b>{" "}
+        </li>
+        <li>
+          <u>
+            <b>ORF Data</b>
+          </u>
+        </li>
         <OrfData />
-        <li>Protein Sequence: </li>
       </ul>
     </>
   );

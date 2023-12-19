@@ -11,7 +11,7 @@
   list-style: none;
   font-family: "Courier New", Courier, monospace;
   padding: 2rem 0;
-  margin-top: 3rem;
+  margin: 0 1rem;
   min-height: 65vh;
 }
 
@@ -44,10 +44,8 @@
 .searchResult {
   list-style: none;
   margin-left: 4rem;
-}
-
-.searchElement {
-  width: max-content;
+  display: flex;
+  flex-direction: column;
 }
 
 .searchElement h3 {
@@ -67,9 +65,14 @@
 @media only screen and (max-width: 574px) {
   .mainContent {
     margin-top: 2rem;
+    margin-left: 0;
   }
 
   .searchResult {
-    margin-left: auto;
+    margin: 0 0.2rem;
+  }
+
+  .entryData {
+    padding-top: 0;
   }
 }
