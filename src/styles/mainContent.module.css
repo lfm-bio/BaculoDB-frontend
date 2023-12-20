@@ -21,7 +21,7 @@
 
 .orfData {
   list-style: none;
-  /* font-family: "Courier New", Courier, monospace; */
+  font-family: "Courier New", Courier, monospace;
   padding: 0;
   padding-left: 1rem;
 }

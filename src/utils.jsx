@@ -12,3 +12,13 @@ export const getFinalArray = (initialArray) => {
   }
   return resultsArray;
 };
+
+export const makeFasta = (seqID, seq) => {
+  const fastaContent = `>${seqID}\n${seq}`;
+  const blob = new Blob([fastaContent], { type: "text/plain" });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.download = "sequence.fasta";
+  link.href = url;
+  link.click();
+};

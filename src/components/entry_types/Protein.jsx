@@ -1,7 +1,10 @@
 import styles from "../../styles/mainContent.module.css";
+import { makeFasta } from "../../utils";
+import { Link } from "react-router-dom";
 
 function Protein(props) {
   const entry = props.entryData;
+
   function OrfData(props) {
     return (
       <>
@@ -11,6 +14,24 @@ function Protein(props) {
           </li>
           <li>
             <b>%GC:</b> {props.orfGcPerc}
+          </li>
+          <li>
+            <a
+              href={`https://blast.ncbi.nlm.nih.gov/Blast.cgi?PROGRAM=blastn&PAGE_TYPE=BlastSearch&BLAST_SPEC=&LINK_LOC=blasttab&LAST_PAGE=blastp&QUERY=${props.orfSeq}`}
+              target="_blank"
+            >
+              <b>Run BlastN</b>
+            </a>
+          </li>
+          <li>
+            <a
+              href="#"
+              onClick={() => {
+                makeFasta(entry.gb_accss, props.orfSeq);
+              }}
+            >
+              <b>Download FASTA</b>
+            </a>
           </li>
         </ul>
       </>
@@ -27,7 +48,9 @@ function Protein(props) {
           <b>Protein ID:</b> {entry.gb_accss}
         </li>
         <li>
-          <b>Organism:</b> {entry.genome} ({entry.genome_name})
+          <b>Organism:</b>{" "}
+          <a href={`../entry/${entry.genome}`}>{entry.genome}</a> (
+          {entry.genome_name})
         </li>
         <li>
           <b>Lenght(aa):</b> {entry.length}
@@ -42,11 +65,41 @@ function Protein(props) {
           <b>Orthology Group:</b>{" "}
         </li>
         <li>
+          <a
+            href={`https://blast.ncbi.nlm.nih.gov/Blast.cgi?PAGE=Proteins&PROGRAM=blastp&BLAST_PROGRAMS=blastp&QUERY=${entry.gb_accss}&LINK_LOC=protein&PAGE_TYPE=BlastSearch`}
+            target="_blank"
+          >
+            <b>Run BlastP</b>
+          </a>
+        </li>
+        <li>
+          <a
+            href={`https://www.ebi.ac.uk/interpro/search/sequence/${entry.seq}`}
+            target="_blank"
+          >
+            <b>Run InterProScan</b>
+          </a>
+        </li>
+        <li>
+          <a
+            href="#"
+            onClick={() => {
+              makeFasta(entry.gb_accss, entry.seq);
+            }}
+          >
+            <b>Download FASTA</b>
+          </a>
+        </li>
+        <li>
           <u>
             <b>ORF Data</b>
           </u>
         </li>
-        <OrfData orfLength={entry.orf_length} orfGcPerc={entry.orf_gc_perc} />
+        <OrfData
+          orfLength={entry.orf_length}
+          orfGcPerc={entry.orf_gc_perc}
+          orfSeq={entry.orf_seq}
+        />
       </ul>
     </>
   );

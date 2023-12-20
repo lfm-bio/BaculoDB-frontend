@@ -1,7 +1,9 @@
 import styles from "../../styles/mainContent.module.css";
+import { makeFasta } from "../../utils";
 
 function Genome(props) {
   const entry = props.entryData;
+
   return (
     <>
       <ul className={styles.entryData}>
@@ -31,6 +33,24 @@ function Genome(props) {
         </li>
         <li>
           <b>%GC:</b> {entry.gc_perc}
+        </li>
+        <li>
+          <a
+            href={`https://blast.ncbi.nlm.nih.gov/Blast.cgi?PROGRAM=blastn&PAGE_TYPE=BlastSearch&BLAST_SPEC=&LINK_LOC=blasttab&LAST_PAGE=blastp&QUERY=${entry.gb_accss}`}
+            target="_blank"
+          >
+            <b>Run BlastN</b>
+          </a>
+        </li>
+        <li>
+          <a
+            href="#"
+            onClick={() => {
+              makeFasta(entry.gb_accss, entry.seq);
+            }}
+          >
+            <b>Download FASTA</b>
+          </a>
         </li>
       </ul>
     </>
