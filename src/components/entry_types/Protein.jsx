@@ -1,6 +1,5 @@
 import styles from "../../styles/mainContent.module.css";
 import { makeFasta } from "../../utils";
-import { Link } from "react-router-dom";
 
 function Protein(props) {
   const entry = props.entryData;
