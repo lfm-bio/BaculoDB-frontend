@@ -32,7 +32,7 @@ input {
 
 select:hover,
 button:hover {
-  background-color: black;
+  background-color: #c4122e;
   color: white;
 }
 
