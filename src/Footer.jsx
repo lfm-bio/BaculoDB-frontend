@@ -10,7 +10,9 @@ function Footer() {
         <Link to="mailto:asdoia@adasd.com">Send us an email</Link>
       </div>
       <div>
-        <Link to="https://github.com">Source Code</Link>
+        <a href="https://github.com" target="_blank">
+          Source Code
+        </a>
       </div>
     </div>
   );

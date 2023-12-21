@@ -43,14 +43,13 @@ function Genome(props) {
           </a>
         </li>
         <li>
-          <a
-            href="#"
+          <button
             onClick={() => {
               makeFasta(entry.gb_accss, entry.seq);
             }}
           >
-            <b>Download FASTA</b>
-          </a>
+            Download FASTA
+          </button>
         </li>
       </ul>
     </>

@@ -23,14 +23,13 @@ function Protein(props) {
             </a>
           </li>
           <li>
-            <a
-              href="#"
+            <button
               onClick={() => {
                 makeFasta(entry.gb_accss, props.orfSeq);
               }}
             >
-              <b>Download FASTA</b>
-            </a>
+              Download FASTA
+            </button>
           </li>
         </ul>
       </>
@@ -80,14 +79,13 @@ function Protein(props) {
           </a>
         </li>
         <li>
-          <a
-            href="#"
+          <button
             onClick={() => {
               makeFasta(entry.gb_accss, entry.seq);
             }}
           >
-            <b>Download FASTA</b>
-          </a>
+            Download FASTA
+          </button>
         </li>
         <li>
           <u>
