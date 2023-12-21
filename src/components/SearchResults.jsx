@@ -43,28 +43,26 @@ function SearchResults() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const loadEntry = async () => {
-      const res = await searchByIDName(searchQuery);
-      setEntries(res);
-    };
-    loadEntry();
+    searchByIDName(searchQuery).then(setEntries);
   }, []);
 
   if (entries === undefined) {
-    return <h1>loading...</h1>;
+    return <h1>Loading...</h1>;
+  }
+
+  const resultsArray = getFinalArray(entries);
+  if (resultsArray.length === 0) {
+    return <h1>No entries found</h1>;
+  }
+
+  if (resultsArray.length === 1) {
+    navigate(`../entry/${resultsArray[0].id}`);
   } else {
-    const resultsArray = getFinalArray(entries);
-    if (resultsArray.length === 0) {
-      return <h1>No entries found</h1>;
-    } else if (resultsArray.length === 1) {
-      navigate(`../entry/${resultsArray[0].id}`);
-    } else {
-      return (
-        <ul className={styles.searchResult}>
-          <SearchElements entries={resultsArray} />
-        </ul>
-      );
-    }
+    return (
+      <ul className={styles.searchResult}>
+        <SearchElements entries={resultsArray} />
+      </ul>
+    );
   }
 }
 
