@@ -4,15 +4,22 @@ import { searchByIDName } from "../api/dbs.api";
 import { useState, useEffect } from "react";
 
 function SearchElement(props) {
+  let entryName = "";
+  if (props.entry_type === "Protein") {
+    entryName = `${props.name}, ${props.genome_name}`;
+  } else {
+    entryName = props.name;
+  }
+
   return (
     <div className={styles.searchElement}>
       <Link to={`../entry/${props.id}`}>
-        <h3>{props.name}</h3>
+        <h3>{entryName}</h3>
       </Link>
       <div className={styles.elementDescrip}>
         <p>ID: {props.gb_accss}</p>
-        <p>Length: {props.length}</p>
         <p>Type: {props.entry_type}</p>
+        <p>Length: {props.length}</p>
       </div>
     </div>
   );
@@ -25,6 +32,7 @@ function SearchElements(props) {
         <SearchElement
           id={result.id}
           name={result.name}
+          genome_name={result.genome_name}
           gb_accss={result.gb_accss}
           length={result.length}
           entry_type={result.entry_type}
