@@ -1,3 +1,4 @@
+import { generatePath } from "react-router-dom";
 import styles from "../../styles/mainContent.module.css";
 import { makeFasta } from "../../utils";
 
@@ -28,7 +29,7 @@ function Protein(props) {
                 makeFasta(entry.gb_accss, props.orfSeq);
               }}
             >
-              Download FASTA
+              Download ORF
             </button>
           </li>
         </ul>
@@ -47,8 +48,14 @@ function Protein(props) {
         </li>
         <li>
           <b>Organism:</b>{" "}
-          <a href={`../entry/${entry.genome}`}>{entry.genome}</a> (
-          {entry.genome_name})
+          <a
+            href={generatePath("../entry/:id", {
+              id: entry.genome,
+            })}
+          >
+            {entry.genome}
+          </a>{" "}
+          ({entry.genome_name})
         </li>
         <li>
           <b>Lenght(aa):</b> {entry.length}
@@ -84,7 +91,7 @@ function Protein(props) {
               makeFasta(entry.gb_accss, entry.seq);
             }}
           >
-            Download FASTA
+            Download Protein
           </button>
         </li>
         <li>

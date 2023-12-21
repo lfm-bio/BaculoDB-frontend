@@ -1,7 +1,6 @@
 import { useParams } from "react-router-dom";
 import { searchByIDName } from "../api/dbs.api";
 import { useState, useEffect } from "react";
-import { getFinalArray } from "../utils";
 import Genome from "./entry_types/Genome";
 import Protein from "./entry_types/Protein";
 import NcRNA from "./entry_types/NcRNA";
@@ -19,13 +18,12 @@ function Entry() {
   if (entries === undefined) {
     return <h1>Loading</h1>;
   }
-  const resultsArray = getFinalArray(entries);
 
-  if (resultsArray.length != 1) {
+  if (entries.length != 1) {
     return <h1>No entries found</h1>;
   }
 
-  const entry = resultsArray[0];
+  const entry = entries[0];
   switch (entry.entry_type) {
     case "Genome":
       return <Genome entryData={entry} />;

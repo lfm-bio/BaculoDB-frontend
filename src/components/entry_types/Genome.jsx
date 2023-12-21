@@ -1,8 +1,19 @@
 import styles from "../../styles/mainContent.module.css";
-import { makeFasta } from "../../utils";
+import { makeFasta, makeMultiFasta } from "../../utils";
+import { getProteome } from "../../api/dbs.api";
+import { useState, useEffect } from "react";
 
 function Genome(props) {
   const entry = props.entryData;
+  const [proteome, setProteome] = useState();
+
+  useEffect(() => {
+    getProteome(entry.id).then(setProteome);
+  }, []);
+
+  if (proteome === undefined) {
+    return <h1>Loading...</h1>;
+  }
 
   return (
     <>
@@ -48,7 +59,25 @@ function Genome(props) {
               makeFasta(entry.gb_accss, entry.seq);
             }}
           >
-            Download FASTA
+            Download Genome
+          </button>
+        </li>
+        <li>
+          <button
+            onClick={() => {
+              makeMultiFasta(proteome, "prot");
+            }}
+          >
+            Download Proteome
+          </button>
+        </li>
+        <li>
+          <button
+            onClick={() => {
+              makeMultiFasta(proteome, "orf");
+            }}
+          >
+            Download Orfeome
           </button>
         </li>
       </ul>

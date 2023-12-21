@@ -1,8 +1,7 @@
 import styles from "../styles/mainContent.module.css";
-import { useParams, Link, useNavigate } from "react-router-dom";
+import { useParams, Link, Navigate, generatePath } from "react-router-dom";
 import { searchByIDName } from "../api/dbs.api";
 import { useState, useEffect } from "react";
-import { getFinalArray } from "../utils";
 
 function SearchElement(props) {
   return (
@@ -40,7 +39,6 @@ function SearchResults() {
   const params = useParams();
   const searchQuery = params.query;
   const [entries, setEntries] = useState();
-  const navigate = useNavigate();
 
   useEffect(() => {
     searchByIDName(searchQuery).then(setEntries);
@@ -50,17 +48,18 @@ function SearchResults() {
     return <h1>Loading...</h1>;
   }
 
-  const resultsArray = getFinalArray(entries);
-  if (resultsArray.length === 0) {
+  if (entries.length === 0) {
     return <h1>No entries found</h1>;
   }
 
-  if (resultsArray.length === 1) {
-    navigate(`../entry/${resultsArray[0].id}`);
+  if (entries.length === 1) {
+    return (
+      <Navigate to={generatePath("../entry/:id", { id: entries[0].id })} />
+    );
   } else {
     return (
       <ul className={styles.searchResult}>
-        <SearchElements entries={resultsArray} />
+        <SearchElements entries={entries} />
       </ul>
     );
   }
