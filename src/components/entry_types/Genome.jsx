@@ -40,7 +40,7 @@ function Genome(props) {
           <b>Morphology:</b>{" "}
         </li>
         <li>
-          <b>Lenght(bp):</b> {entry.length}
+          <b>Lenght(bp):</b> {entry.seq.length}
         </li>
         <li>
           <b>%GC:</b> {entry.gc_perc}

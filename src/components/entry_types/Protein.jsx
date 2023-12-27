@@ -10,7 +10,7 @@ function Protein(props) {
       <>
         <ul className={styles.orfData}>
           <li>
-            <b>Length(bp):</b> {props.orfLength}
+            <b>Length(bp):</b> {props.orfSeq.length}
           </li>
           <li>
             <b>%GC:</b> {props.orfGcPerc}
@@ -58,7 +58,7 @@ function Protein(props) {
           ({entry.genome_name})
         </li>
         <li>
-          <b>Lenght(aa):</b> {entry.length}
+          <b>Lenght(aa):</b> {entry.seq.length}
         </li>
         <li>
           <b>MW:</b>{" "}
