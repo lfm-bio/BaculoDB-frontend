@@ -1,5 +1,5 @@
-import { generatePath } from "react-router-dom";
 import styles from "../../styles/mainContent.module.css";
+import { generatePath } from "react-router-dom";
 import { makeFasta } from "../../utils";
 
 function Protein(props) {
@@ -29,7 +29,7 @@ function Protein(props) {
                 makeFasta(entry.gb_accss, props.orfSeq);
               }}
             >
-              Download ORF
+              Download ORF Fasta
             </button>
           </li>
         </ul>
@@ -39,6 +39,7 @@ function Protein(props) {
 
   return (
     <>
+      <h1>Protein</h1>
       <ul className={styles.entryData}>
         <li>
           <b>Name:</b> {entry.name}
@@ -59,12 +60,6 @@ function Protein(props) {
         </li>
         <li>
           <b>Lenght(aa):</b> {entry.seq.length}
-        </li>
-        <li>
-          <b>MW:</b>{" "}
-        </li>
-        <li>
-          <b>Function:</b>{" "}
         </li>
         <li>
           <b>Orthology Group:</b>{" "}
@@ -91,7 +86,7 @@ function Protein(props) {
               makeFasta(entry.gb_accss, entry.seq);
             }}
           >
-            Download Protein
+            Download Protein Fasta
           </button>
         </li>
         <li>

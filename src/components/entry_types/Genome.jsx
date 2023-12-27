@@ -17,6 +17,7 @@ function Genome(props) {
 
   return (
     <>
+      <h1>Genome</h1>
       <ul className={styles.entryData}>
         <li>
           <b>Name:</b> {entry.name}
@@ -59,7 +60,7 @@ function Genome(props) {
               makeFasta(entry.gb_accss, entry.seq);
             }}
           >
-            Download Genome
+            Download Genome Fasta
           </button>
         </li>
         <li>
@@ -68,7 +69,7 @@ function Genome(props) {
               makeMultiFasta(proteome, "prot");
             }}
           >
-            Download Proteome
+            Download Proteome Fasta
           </button>
         </li>
         <li>
@@ -77,7 +78,7 @@ function Genome(props) {
               makeMultiFasta(proteome, "orf");
             }}
           >
-            Download Orfeome
+            Download Orfeome Fasta
           </button>
         </li>
       </ul>

@@ -1,18 +1,19 @@
 import { useParams } from "react-router-dom";
-import { searchByIDName } from "../api/dbs.api";
+import { searchInDB } from "../api/dbs.api";
 import { useState, useEffect } from "react";
 import Genome from "./entry_types/Genome";
 import Protein from "./entry_types/Protein";
 import NcRNA from "./entry_types/NcRNA";
 import Ori from "./entry_types/Ori";
 import RegulatoryElement from "./entry_types/RegulatoryElement";
+import OrthologyGroup from "./entry_types/OrthologyGroup";
 
 function Entry() {
   const { id } = useParams();
   const [entries, setEntries] = useState();
 
   useEffect(() => {
-    searchByIDName(id).then(setEntries);
+    searchInDB(id).then(setEntries);
   }, [id]);
 
   if (entries === undefined) {
@@ -35,6 +36,8 @@ function Entry() {
       return <NcRNA entryData={entry} />;
     case "regulatoryelement":
       return <RegulatoryElement entryData={entry} />;
+    case "OrthologyGroup":
+      return <OrthologyGroup entryData={entry} />;
   }
 }
 

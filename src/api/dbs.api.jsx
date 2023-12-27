@@ -43,6 +43,33 @@ export const searchByIDName = (searchQuery) => {
   return searchData;
 };
 
+export const searchInDB = (searchQuery) => {
+  const promGenome = apiInstance.get("genome", {
+    params: {
+      search: searchQuery,
+    },
+  });
+  const promProtein = apiInstance.get("protein", {
+    params: {
+      search: searchQuery,
+    },
+  });
+  const promOrthologyGroup = apiInstance.get("orthologygroup", {
+    params: {
+      search: searchQuery,
+    },
+  });
+
+  const searchData = Promise.all([promGenome, promProtein, promOrthologyGroup]).then(
+    ([genomeResponse, proteinResponse, orthologyGroupResponse]) => {
+      const initialArray = [genomeResponse, proteinResponse, orthologyGroupResponse];
+      const finalArray = getFinalArray(initialArray);
+      return finalArray;
+    }
+  );
+  return searchData;
+};
+
 export const getProteome = (genomeID) => {
   const promProteins = apiInstance.get("proteome", {
     params: {
