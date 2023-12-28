@@ -21,7 +21,7 @@ function Entry() {
   }
 
   if (entries.length != 1) {
-    return <h1>No entries found</h1>;
+    return <h1>Wrong entry</h1>;
   }
 
   const entry = entries[0];

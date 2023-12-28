@@ -32,14 +32,25 @@ export const searchByIDName = (searchQuery) => {
       search: searchQuery,
     },
   });
+  const promOrthologyGroup = apiInstance.get("orthologygroup", {
+    params: {
+      search: searchQuery,
+    },
+  });
 
-  const searchData = Promise.all([promGenome, promProtein]).then(
-    ([genomeResponse, proteinResponse]) => {
-      const initialArray = [genomeResponse, proteinResponse];
-      const finalArray = getFinalArray(initialArray);
-      return finalArray;
-    }
-  );
+  const searchData = Promise.all([
+    promGenome,
+    promProtein,
+    promOrthologyGroup,
+  ]).then(([genomeResponse, proteinResponse, orthologyGroupResponse]) => {
+    const initialArray = [
+      genomeResponse,
+      proteinResponse,
+      orthologyGroupResponse,
+    ];
+    const finalArray = getFinalArray(initialArray);
+    return finalArray;
+  });
   return searchData;
 };
 
@@ -60,13 +71,19 @@ export const searchInDB = (searchQuery) => {
     },
   });
 
-  const searchData = Promise.all([promGenome, promProtein, promOrthologyGroup]).then(
-    ([genomeResponse, proteinResponse, orthologyGroupResponse]) => {
-      const initialArray = [genomeResponse, proteinResponse, orthologyGroupResponse];
-      const finalArray = getFinalArray(initialArray);
-      return finalArray;
-    }
-  );
+  const searchData = Promise.all([
+    promGenome,
+    promProtein,
+    promOrthologyGroup,
+  ]).then(([genomeResponse, proteinResponse, orthologyGroupResponse]) => {
+    const initialArray = [
+      genomeResponse,
+      proteinResponse,
+      orthologyGroupResponse,
+    ];
+    const finalArray = getFinalArray(initialArray);
+    return finalArray;
+  });
   return searchData;
 };
 

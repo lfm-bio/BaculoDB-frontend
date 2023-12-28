@@ -1,14 +1,14 @@
 import styles from "../../styles/mainContent.module.css";
-import { makeFasta, makeMultiFasta } from "../../utils";
+import { makeFasta } from "../../utils";
 import { getProteome } from "../../api/dbs.api";
 import { useState, useEffect } from "react";
 
 function Genome(props) {
-  const entry = props.entryData;
+  const entryData = props.entryData;
   const [proteome, setProteome] = useState();
 
   useEffect(() => {
-    getProteome(entry.id).then(setProteome);
+    getProteome(entryData.id).then(setProteome);
   }, []);
 
   if (proteome === undefined) {
@@ -20,18 +20,18 @@ function Genome(props) {
       <h1>Genome</h1>
       <ul className={styles.entryData}>
         <li>
-          <b>Name:</b> {entry.name}
+          <b>Name:</b> {entryData.name}
         </li>
         <li>
-          <b>Organism ID:</b> {entry.gb_accss}
+          <b>Organism ID:</b> {entryData.gb_accss}
         </li>
         <li>
-          {entry.reference && <b>Reference: </b>}
+          {entryData.reference && <b>Reference: </b>}
           <a
-            href={`https://pubmed.ncbi.nlm.nih.gov/${entry.reference}`}
+            href={`https://pubmed.ncbi.nlm.nih.gov/${entryData.reference}`}
             target="_blank"
           >
-            {entry.reference && `${entry.reference}`}
+            {entryData.reference && `${entryData.reference}`}
           </a>
         </li>
         <li>
@@ -41,14 +41,14 @@ function Genome(props) {
           <b>Morphology:</b>{" "}
         </li>
         <li>
-          <b>Lenght(bp):</b> {entry.seq.length}
+          <b>Lenght(bp):</b> {entryData.seq.length}
         </li>
         <li>
-          <b>%GC:</b> {entry.gc_perc}
+          <b>%GC:</b> {entryData.gc_perc}
         </li>
         <li>
           <a
-            href={`https://blast.ncbi.nlm.nih.gov/Blast.cgi?PROGRAM=blastn&PAGE_TYPE=BlastSearch&BLAST_SPEC=&LINK_LOC=blasttab&LAST_PAGE=blastp&QUERY=${entry.gb_accss}`}
+            href={`https://blast.ncbi.nlm.nih.gov/Blast.cgi?PROGRAM=blastn&PAGE_TYPE=BlastSearch&BLAST_SPEC=&LINK_LOC=blasttab&LAST_PAGE=blastp&QUERY=${entryData.gb_accss}`}
             target="_blank"
           >
             <b>Run BlastN</b>
@@ -57,7 +57,7 @@ function Genome(props) {
         <li>
           <button
             onClick={() => {
-              makeFasta(entry.gb_accss, entry.seq);
+              makeFasta([entryData]);
             }}
           >
             Download Genome Fasta
@@ -66,7 +66,7 @@ function Genome(props) {
         <li>
           <button
             onClick={() => {
-              makeMultiFasta(proteome, "prot");
+              makeFasta(proteome);
             }}
           >
             Download Proteome Fasta
@@ -75,7 +75,7 @@ function Genome(props) {
         <li>
           <button
             onClick={() => {
-              makeMultiFasta(proteome, "orf");
+              makeFasta(proteome, true);
             }}
           >
             Download Orfeome Fasta

@@ -3,70 +3,44 @@ import { generatePath } from "react-router-dom";
 import { makeFasta } from "../../utils";
 
 function Protein(props) {
-  const entry = props.entryData;
-
-  function OrfData(props) {
-    return (
-      <>
-        <ul className={styles.orfData}>
-          <li>
-            <b>Length(bp):</b> {props.orfSeq.length}
-          </li>
-          <li>
-            <b>%GC:</b> {props.orfGcPerc}
-          </li>
-          <li>
-            <a
-              href={`https://blast.ncbi.nlm.nih.gov/Blast.cgi?PROGRAM=blastn&PAGE_TYPE=BlastSearch&BLAST_SPEC=&LINK_LOC=blasttab&LAST_PAGE=blastp&QUERY=${props.orfSeq}`}
-              target="_blank"
-            >
-              <b>Run BlastN</b>
-            </a>
-          </li>
-          <li>
-            <button
-              onClick={() => {
-                makeFasta(entry.gb_accss, props.orfSeq);
-              }}
-            >
-              Download ORF Fasta
-            </button>
-          </li>
-        </ul>
-      </>
-    );
-  }
+  const entryData = props.entryData;
 
   return (
     <>
       <h1>Protein</h1>
       <ul className={styles.entryData}>
         <li>
-          <b>Name:</b> {entry.name}
+          <b>Name:</b> {entryData.name}
         </li>
         <li>
-          <b>Protein ID:</b> {entry.gb_accss}
+          <b>Protein ID:</b> {entryData.gb_accss}
         </li>
         <li>
           <b>Organism:</b>{" "}
           <a
             href={generatePath("../entry/:id", {
-              id: entry.genome,
+              id: entryData.genome,
             })}
           >
-            {entry.genome}
+            {entryData.genome}
           </a>{" "}
-          ({entry.genome_name})
+          ({entryData.genome_name})
         </li>
         <li>
-          <b>Lenght(aa):</b> {entry.seq.length}
+          <b>Lenght(aa):</b> {entryData.seq.length}
         </li>
         <li>
           <b>Orthology Group:</b>{" "}
         </li>
         <li>
+          <b>ORF Length(bp):</b> {entryData.orf_seq.length}
+        </li>
+        <li>
+          <b>ORF %GC:</b> {entryData.orf_gc_perc}
+        </li>
+        <li>
           <a
-            href={`https://blast.ncbi.nlm.nih.gov/Blast.cgi?PAGE=Proteins&PROGRAM=blastp&BLAST_PROGRAMS=blastp&QUERY=${entry.gb_accss}&LINK_LOC=protein&PAGE_TYPE=BlastSearch`}
+            href={`https://blast.ncbi.nlm.nih.gov/Blast.cgi?PAGE=Proteins&PROGRAM=blastp&BLAST_PROGRAMS=blastp&QUERY=${entryData.gb_accss}&LINK_LOC=protein&PAGE_TYPE=BlastSearch`}
             target="_blank"
           >
             <b>Run BlastP</b>
@@ -74,31 +48,38 @@ function Protein(props) {
         </li>
         <li>
           <a
-            href={`https://www.ebi.ac.uk/interpro/search/sequence/${entry.seq}`}
+            href={`https://www.ebi.ac.uk/interpro/search/sequence/${entryData.seq}`}
             target="_blank"
           >
             <b>Run InterProScan</b>
           </a>
         </li>
         <li>
+          <a
+            href={`https://blast.ncbi.nlm.nih.gov/Blast.cgi?PROGRAM=blastn&PAGE_TYPE=BlastSearch&BLAST_SPEC=&LINK_LOC=blasttab&LAST_PAGE=blastp&QUERY=${entryData.orf_seq}`}
+            target="_blank"
+          >
+            <b>Run BlastN</b>
+          </a>
+        </li>
+        <li>
           <button
             onClick={() => {
-              makeFasta(entry.gb_accss, entry.seq);
+              makeFasta([entryData]);
             }}
           >
             Download Protein Fasta
           </button>
         </li>
         <li>
-          <u>
-            <b>ORF Data</b>
-          </u>
+          <button
+            onClick={() => {
+              makeFasta([entryData], true);
+            }}
+          >
+            Download ORF Fasta
+          </button>
         </li>
-        <OrfData
-          orfLength={entry.orf_length}
-          orfGcPerc={entry.orf_gc_perc}
-          orfSeq={entry.orf_seq}
-        />
       </ul>
     </>
   );

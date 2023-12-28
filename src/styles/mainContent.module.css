@@ -19,13 +19,6 @@
   margin-bottom: 0.8rem;
 }
 
-.orfData {
-  list-style: none;
-  font-family: "Courier New", Courier, monospace;
-  padding: 0;
-  padding-left: 1rem;
-}
-
 .table {
   border: 2px solid black;
   border-spacing: 25px;
