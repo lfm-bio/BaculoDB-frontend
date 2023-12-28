@@ -13,7 +13,13 @@ function Protein(props) {
           <b>Name:</b> {entryData.name}
         </li>
         <li>
-          <b>Protein ID:</b> {entryData.gb_accss}
+          <b>Protein ID: </b>
+          <a
+            href={`https://www.ncbi.nlm.nih.gov/protein/${entryData.gb_accss}`}
+            target="_blank"
+          >
+            {entryData.gb_accss}
+          </a>
         </li>
         <li>
           <b>Organism:</b>{" "}

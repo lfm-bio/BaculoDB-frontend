@@ -23,7 +23,13 @@ function Genome(props) {
           <b>Name:</b> {entryData.name}
         </li>
         <li>
-          <b>Organism ID:</b> {entryData.gb_accss}
+          <b>Organism ID: </b>
+          <a
+            href={`https://www.ncbi.nlm.nih.gov/nuccore/${entryData.gb_accss}`}
+            target="_blank"
+          >
+            {entryData.gb_accss}
+          </a>
         </li>
         <li>
           {entryData.reference && <b>Reference: </b>}
