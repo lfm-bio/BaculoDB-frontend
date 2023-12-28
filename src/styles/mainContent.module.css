@@ -41,6 +41,11 @@
   flex-direction: column;
 }
 
+.searchResult button {
+  margin-left: auto;
+  margin-top: 0.1rem;
+}
+
 .searchElement h3 {
   margin-bottom: 0px;
   padding: 0px;

@@ -2,6 +2,7 @@ import styles from "../styles/mainContent.module.css";
 import { useParams, Link, Navigate, generatePath } from "react-router-dom";
 import { mainSearch } from "../api/dbs.api";
 import { useState, useEffect } from "react";
+import { makeFasta, makeCsv } from "../utils";
 
 function SearchElement(props) {
   let entryName = "";
@@ -67,6 +68,20 @@ function SearchResults() {
   } else {
     return (
       <ul className={styles.searchResult}>
+        <button
+          onClick={() => {
+            makeFasta(entries);
+          }}
+        >
+          Download Fasta
+        </button>
+        <button
+          onClick={() => {
+            makeCsv(entries);
+          }}
+        >
+          Download IDs
+        </button>
         <SearchElements entries={entries} />
       </ul>
     );
