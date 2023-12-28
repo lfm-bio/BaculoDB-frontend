@@ -1,6 +1,6 @@
 import styles from "../styles/mainContent.module.css";
 import { useParams, Link, Navigate, generatePath } from "react-router-dom";
-import { searchByIDName } from "../api/dbs.api";
+import { mainSearch } from "../api/dbs.api";
 import { useState, useEffect } from "react";
 
 function SearchElement(props) {
@@ -34,7 +34,7 @@ function SearchElements(props) {
           name={result.name}
           genome_name={result.genome_name}
           gb_accss={result.gb_accss}
-          length={result.length}
+          length={result.seq.length}
           entry_type={result.entry_type}
         />
       </li>
@@ -49,7 +49,7 @@ function SearchResults() {
   const [entries, setEntries] = useState();
 
   useEffect(() => {
-    searchByIDName(searchQuery).then(setEntries);
+    mainSearch(searchQuery).then(setEntries);
   }, []);
 
   if (entries === undefined) {

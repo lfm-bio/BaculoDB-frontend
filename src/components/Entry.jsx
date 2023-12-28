@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { searchInDB } from "../api/dbs.api";
+import { mainSearch } from "../api/dbs.api";
 import { useState, useEffect } from "react";
 import Genome from "./entry_types/Genome";
 import Protein from "./entry_types/Protein";
@@ -13,7 +13,7 @@ function Entry() {
   const [entries, setEntries] = useState();
 
   useEffect(() => {
-    searchInDB(id).then(setEntries);
+    mainSearch(id).then(setEntries);
   }, [id]);
 
   if (entries === undefined) {

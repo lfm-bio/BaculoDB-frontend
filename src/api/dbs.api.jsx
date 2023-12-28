@@ -21,40 +21,7 @@ const defaultOptions = {
 
 const apiInstance = axios.create(defaultOptions);
 
-export const searchByIDName = (searchQuery) => {
-  const promGenome = apiInstance.get("genome", {
-    params: {
-      search: searchQuery,
-    },
-  });
-  const promProtein = apiInstance.get("protein", {
-    params: {
-      search: searchQuery,
-    },
-  });
-  const promOrthologyGroup = apiInstance.get("orthologygroup", {
-    params: {
-      search: searchQuery,
-    },
-  });
-
-  const searchData = Promise.all([
-    promGenome,
-    promProtein,
-    promOrthologyGroup,
-  ]).then(([genomeResponse, proteinResponse, orthologyGroupResponse]) => {
-    const initialArray = [
-      genomeResponse,
-      proteinResponse,
-      orthologyGroupResponse,
-    ];
-    const finalArray = getFinalArray(initialArray);
-    return finalArray;
-  });
-  return searchData;
-};
-
-export const searchInDB = (searchQuery) => {
+export const mainSearch = (searchQuery) => {
   const promGenome = apiInstance.get("genome", {
     params: {
       search: searchQuery,

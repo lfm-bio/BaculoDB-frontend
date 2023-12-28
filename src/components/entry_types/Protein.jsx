@@ -30,7 +30,14 @@ function Protein(props) {
           <b>Lenght(aa):</b> {entryData.seq.length}
         </li>
         <li>
-          <b>Orthology Group:</b>{" "}
+          {entryData.orthology_group_id && <b>Orthology Group: </b>}
+          <a
+            href={generatePath("../entry/:id", {
+              id: entryData.orthology_group_id,
+            })}
+          >
+            {entryData.orthology_group_id && `${entryData.orthology_group_id}`}
+          </a>
         </li>
         <li>
           <b>ORF Length(bp):</b> {entryData.orf_seq.length}
