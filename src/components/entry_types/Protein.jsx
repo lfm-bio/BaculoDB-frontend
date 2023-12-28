@@ -19,10 +19,10 @@ function Protein(props) {
           <b>Organism:</b>{" "}
           <a
             href={generatePath("../entry/:id", {
-              id: entryData.genome,
+              id: entryData.genome_id,
             })}
           >
-            {entryData.genome}
+            {entryData.genome_id}
           </a>{" "}
           ({entryData.genome_name})
         </li>
