@@ -1,8 +1,8 @@
-const downloadTextFile = (seqsArray) => {
-  const blob = new Blob(seqsArray, { type: "text/plain" });
+const downloadTextFile = (fileName, textFileLines) => {
+  const blob = new Blob(textFileLines, { type: "text/plain" });
   const url = URL.createObjectURL(blob);
   const link = document.createElement("a");
-  link.download = "sequence.fasta";
+  link.download = fileName;
   link.href = url;
   link.click();
 };
@@ -16,7 +16,7 @@ export const makeFasta = (seqs, orf = false) => {
       seqsArray.push(`>${seq.gb_accss}\n${seq.seq}\n`);
     }
   }
-  downloadTextFile(seqsArray);
+  downloadTextFile("sequence.fasta", seqsArray);
 };
 
 export const makeCsv = (seqs) => {
@@ -26,5 +26,5 @@ export const makeCsv = (seqs) => {
       `${seq.id},${seq.name},${seq.entry_type},${seq.seq.length}\n`
     );
   }
-  downloadTextFile(seqsArray);
+  downloadTextFile("ids.csv", seqsArray);
 };
