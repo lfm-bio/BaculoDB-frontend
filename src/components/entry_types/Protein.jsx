@@ -52,7 +52,7 @@ function Protein(props) {
           <b>ORF Length(bp):</b> {entryData.orf_seq.length}
         </li>
         <li>
-          <b>ORF %GC:</b> {entryData.orf_gc_perc}
+          <b>ORF %GC:</b> {entryData.orf_gc_perc}%
         </li>
         <li>
           <a

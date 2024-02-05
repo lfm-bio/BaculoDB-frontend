@@ -51,7 +51,7 @@ function Genome(props) {
           <b>Lenght(bp):</b> {entryData.seq.length}
         </li>
         <li>
-          <b>%GC:</b> {entryData.gc_perc}
+          <b>%GC:</b> {entryData.gc_perc}%
         </li>
         <li>
           <a
