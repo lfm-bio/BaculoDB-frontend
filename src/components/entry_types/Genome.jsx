@@ -41,10 +41,11 @@ function Genome(props) {
           </a>
         </li>
         <li>
-          <b>Genus:</b>{" "}
+          <b>Genus:</b> {entryData.genus}
         </li>
         <li>
-          <b>Morphology:</b>{" "}
+          {entryData.virus_morphology && <b>Morphology: </b>}
+          {entryData.virus_morphology && `${entryData.virus_morphology}`}
         </li>
         <li>
           <b>Lenght(bp):</b> {entryData.seq.length}
