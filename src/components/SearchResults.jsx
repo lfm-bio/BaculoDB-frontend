@@ -68,6 +68,7 @@ function SearchResults() {
   } else {
     return (
       <ul className={styles.searchResult}>
+        <li className={styles.entriesFound}>Entries found: {entries.length}</li>
         <button
           onClick={() => {
             makeFasta(entries);
