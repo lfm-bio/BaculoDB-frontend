@@ -24,7 +24,7 @@ function Baculoviridae() {
           </tr>
 
           <tr>
-            <td>A</td>
+            <td>Alphabaculovirus</td>
             <td>asdas</td>
             <td>3</td>
             <td>4</td>
@@ -32,7 +32,7 @@ function Baculoviridae() {
           </tr>
 
           <tr>
-            <td>AI</td>
+            <td>Alphabaculovirus I</td>
             <td>asdas</td>
             <td>3</td>
             <td>4</td>
@@ -40,7 +40,7 @@ function Baculoviridae() {
           </tr>
 
           <tr>
-            <td>AII</td>
+            <td>Alphabaculovirus II</td>
             <td>2</td>
             <td>3</td>
             <td>4</td>
@@ -48,7 +48,7 @@ function Baculoviridae() {
           </tr>
 
           <tr>
-            <td>B</td>
+            <td>Betabaculovirus</td>
             <td>2</td>
             <td>3</td>
             <td>3</td>
@@ -56,7 +56,7 @@ function Baculoviridae() {
           </tr>
 
           <tr>
-            <td>G</td>
+            <td>Gammabaculovirus</td>
             <td>2</td>
             <td>3</td>
             <td>3</td>
@@ -64,7 +64,7 @@ function Baculoviridae() {
           </tr>
 
           <tr>
-            <td>D</td>
+            <td>Deltabaculovirus</td>
             <td>2</td>
             <td>3</td>
             <td>3</td>
