@@ -1,6 +1,7 @@
 import styles from "../../styles/mainContent.module.css";
 import { generatePath } from "react-router-dom";
 import { makeFasta } from "../../utils";
+import { calculateMW } from "../../utils";
 
 function Protein(props) {
   const entryData = props.entryData;
@@ -22,7 +23,7 @@ function Protein(props) {
           </a>
         </li>
         <li>
-          <b>Organism:</b>{" "}
+          <b>Organism: </b>
           <a
             href={generatePath("../entry/:id", {
               id: entryData.genome_id,
@@ -34,6 +35,9 @@ function Protein(props) {
         </li>
         <li>
           <b>Lenght(aa):</b> {entryData.seq.length}
+        </li>
+        <li>
+          <b>MW(kDa):</b> {calculateMW(entryData.seq)}
         </li>
         <li>
           {entryData.orthology_group_id && <b>Orthology Group: </b>}
