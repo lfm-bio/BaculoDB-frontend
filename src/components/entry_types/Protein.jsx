@@ -46,6 +46,9 @@ function Protein(props) {
           </a>
         </li>
         <li>
+          <b>Genomic Position:</b> {entryData.genomic_position}
+        </li>
+        <li>
           <b>ORF Length(bp):</b> {entryData.orf_seq.length}
         </li>
         <li>
