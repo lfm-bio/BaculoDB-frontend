@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import styles from "./styles/main.module.css";
+import "./styles/main.css";
 import Header from "./Header";
 import Home from "./Home";
 import Footer from "./Footer";
@@ -19,7 +19,7 @@ function App() {
       <BrowserRouter>
         <Header />
 
-        <div className={styles.mainContent}>
+        <div className="mainContent">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/:query" element={<SearchResults />} />

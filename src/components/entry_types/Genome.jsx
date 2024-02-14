@@ -1,5 +1,5 @@
 import styles from "../../styles/mainContent.module.css";
-import { makeFasta } from "../../utils";
+import { makeFasta } from "../../utils/utils";
 import { getProteome } from "../../api/dbs.api";
 import { useState, useEffect } from "react";
 

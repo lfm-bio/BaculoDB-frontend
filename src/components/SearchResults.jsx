@@ -2,7 +2,7 @@ import styles from "../styles/mainContent.module.css";
 import { useParams, Link, Navigate, generatePath } from "react-router-dom";
 import { mainSearch } from "../api/dbs.api";
 import { useState, useEffect } from "react";
-import { makeFasta, makeCsv } from "../utils";
+import { makeFasta, makeCsv } from "../utils/utils";
 
 function SearchElement(props) {
   let entryName = "";

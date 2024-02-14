@@ -1,7 +1,7 @@
 import styles from "../../styles/mainContent.module.css";
 import { generatePath } from "react-router-dom";
-import { makeFasta } from "../../utils";
-import { calculateMW } from "../../utils";
+import { makeFasta } from "../../utils/utils";
+import { calculateMW } from "../../utils/utils";
 
 function Protein(props) {
   const entryData = props.entryData;
