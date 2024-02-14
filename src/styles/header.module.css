@@ -66,4 +66,8 @@
   .searchBar input {
     width: 80%;
   }
+
+  .header {
+    margin: 3rem 0 auto;
+  }
 }
