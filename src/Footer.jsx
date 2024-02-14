@@ -9,11 +9,6 @@ function Footer() {
         Something's wrong?{" "}
         <Link to="mailto:asdoia@adasd.com">Send us an email</Link>
       </div>
-      <div>
-        <a href="https://github.com" target="_blank">
-          Source Code
-        </a>
-      </div>
     </div>
   );
 }
