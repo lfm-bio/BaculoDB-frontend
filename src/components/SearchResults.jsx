@@ -83,6 +83,7 @@ function SearchResults() {
         >
           Download IDs
         </button>
+
         <SearchElements entries={entries} />
       </ul>
     );
