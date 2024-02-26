@@ -69,19 +69,13 @@ function SearchResults() {
     return (
       <ul className={styles.searchResult}>
         <li className={styles.entriesFound}>Entries found: {entries.length}</li>
+
         <button
           onClick={() => {
             makeFasta(entries);
           }}
         >
           Download Fasta
-        </button>
-        <button
-          onClick={() => {
-            makeCsv(entries);
-          }}
-        >
-          Download IDs
         </button>
 
         <SearchElements entries={entries} />
