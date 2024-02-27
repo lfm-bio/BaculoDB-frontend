@@ -30,12 +30,11 @@ function DownloadByGenusMorph() {
           <option>A</option>
           <option>AI</option>
           <option>AII</option>
-          <option>B</option>
+          <option>B / GV</option>
           <option>G</option>
           <option>D</option>
           <option>SNPV</option>
           <option>MNPV</option>
-          <option>GV</option>
         </select>
         <button>Download</button>
       </form>
