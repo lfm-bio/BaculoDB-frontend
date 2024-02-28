@@ -67,3 +67,15 @@ export const getProteome = (genomeID) => {
 
   return searchData;
 };
+
+export const getBaculoviridae = () => {
+  const promBaculoviridae = apiInstance.get("baculoviridae", {});
+  const searchData = Promise.all([promBaculoviridae]).then(
+    (baculoviridaeResponse) => {
+      const proteome = getFinalArray(baculoviridaeResponse);
+      return proteome;
+    }
+  );
+
+  return searchData;
+};
