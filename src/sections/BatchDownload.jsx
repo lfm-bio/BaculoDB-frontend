@@ -37,7 +37,7 @@ function DownloadByGenusMorph() {
 function DownloadByID() {
   const [ids, setIds] = useState("");
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
     e.preventDefault();
   };
 
