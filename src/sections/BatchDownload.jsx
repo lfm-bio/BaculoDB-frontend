@@ -9,6 +9,7 @@ function DownloadByGenusMorph() {
         <label>Download</label>
         <select>
           <option>all</option>
+          <option>ICTV accepted</option>
           <option>with reference</option>
         </select>
         <select>
