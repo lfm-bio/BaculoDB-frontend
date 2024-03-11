@@ -1,5 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "../styles/mainContent.module.css";
+import { makeFasta, removeWhitespace } from "../utils/utils";
+import { getProteome, mainSearch } from "../api/dbs.api";
 
 function DownloadByGenusMorph() {
   const [downloadOptions, setDownloadOptions] = useState({
@@ -51,27 +53,74 @@ function DownloadByGenusMorph() {
 
 function DownloadByID() {
   const [ids, setIds] = useState("");
+  const [idsArray, setIdsArray] = useState();
   const [type, setType] = useState("genomes");
+  const [DB, setDB] = useState();
+  const [chosenSeqs, setChosenSeqs] = useState();
+
+  console.log(DB);
+
+  useEffect(() => {
+    //get all proteomes
+    if (type === "proteomes" || type === "orfeomes") {
+      getProteome("").then(setDB);
+    } else {
+      mainSearch("").then(setDB);
+    }
+  }, [type]);
+
+  useEffect(() => {
+    //filter DB
+    if (idsArray !== undefined) {
+      const chosenSeqsTmp = [];
+      for (const seq of DB) {
+        if (
+          (type === "proteomes" || type === "orfeomes") &&
+          idsArray.indexOf(seq.genome_id) > -1
+        ) {
+          chosenSeqsTmp.push(seq);
+        } else if (type === "genomes" && idsArray.indexOf(seq.id) > -1) {
+          chosenSeqsTmp.push(seq);
+        }
+      }
+      setChosenSeqs(chosenSeqsTmp);
+    }
+  }, [idsArray]);
+
+  useEffect(() => {
+    //download fasta
+    if (chosenSeqs !== undefined) {
+      if (type === "genomes" || type === "proteomes") {
+        makeFasta(chosenSeqs);
+      } else {
+        makeFasta(chosenSeqs, true);
+      }
+    }
+  }, [chosenSeqs]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    //types & ids
+    setIdsArray(removeWhitespace(ids.split(",")));
   };
 
   const handleInputChange = (e) => {
     setIds(e.target.value);
   };
 
-  const handleChange = (e) => {
+  const handleTypeChange = (e) => {
     setType(e.target.value);
   };
+
+  if (DB === undefined) {
+    return <h1>Loading...</h1>;
+  }
 
   return (
     <div className={styles.batchDownload}>
       <h3>Download by ID</h3>
       <form onSubmit={handleSubmit}>
         <label>Download</label>
-        <select onChange={handleChange}>
+        <select onChange={handleTypeChange}>
           <option value="genomes">genomes</option>
           <option value="orfeomes">orfeomes</option>
           <option value="proteomes">proteomes</option>

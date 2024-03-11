@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
-import { getBaculoviridae } from "../api/dbs.api";
+import { getBaculoviridaeTable } from "../api/dbs.api";
 import styles from "../styles/mainContent.module.css";
 
 function Baculoviridae() {
   const [entries, setEntries] = useState();
 
   useEffect(() => {
-    getBaculoviridae().then(setEntries);
+    getBaculoviridaeTable().then(setEntries);
   }, []);
 
   if (entries === undefined) {

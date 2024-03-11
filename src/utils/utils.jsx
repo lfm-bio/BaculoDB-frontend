@@ -66,3 +66,10 @@ export const calculateMW = (seq) => {
   mw -= (seq.length - 1) * weights.WATER;
   return (mw / 1000).toFixed(2); //Da to kDa
 };
+
+export const removeWhitespace = (stringsArray) => {
+  const arrayWOWhitespace = stringsArray.map((string) => {
+    return string.trim();
+  });
+  return arrayWOWhitespace;
+};
