@@ -147,18 +147,18 @@ function Baculoviridae() {
 
           <tr>
             <td>SNPV</td>
-            <td>2</td>
-            <td>3</td>
-            <td>3</td>
-            <td>4</td>
+            <td>NO-DATA</td>
+            <td>NO-DATA</td>
+            <td>NO-DATA</td>
+            <td>NO-DATA</td>
           </tr>
 
           <tr>
             <td>MNPV</td>
-            <td>2</td>
-            <td>3</td>
-            <td>4</td>
-            <td>4</td>
+            <td>NO-DATA</td>
+            <td>NO-DATA</td>
+            <td>NO-DATA</td>
+            <td>NO-DATA</td>
           </tr>
         </tbody>
       </table>
