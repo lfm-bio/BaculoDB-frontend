@@ -26,7 +26,7 @@ function DownloadByGenusMorph() {
           genomeInfo[seq.id] = {
             genus: seq.genus,
             reference: seq.reference,
-            // falta ictv en DB
+            ictv_status: seq.ictv_status,
           };
         }
       }
@@ -84,14 +84,20 @@ function DownloadByGenusMorph() {
         ) {
           filterByIctvRef.push(seq);
         }
+      } else if (downloadOptions.ictvReference === "ictv") {
+        if (
+          (seq.entry_type === "Genome" && genomeData[seq.id].ictv_status) ||
+          (seq.entry_type === "Protein" &&
+            genomeData[seq.genome_id].ictv_status)
+        ) {
+          filterByIctvRef.push(seq);
+        }
       }
     }
     return filterByIctvRef;
   };
 
   useEffect(() => {
-    const filterByIctvRef = [];
-
     if (DB !== undefined && genomeData !== undefined) {
       setDownload(false);
 
@@ -106,12 +112,18 @@ function DownloadByGenusMorph() {
 
   useEffect(() => {
     if (chosenSeqs !== undefined && download) {
-      makeFasta(chosenSeqs);
+      if (
+        downloadOptions.type === "genomes" ||
+        downloadOptions.type === "proteomes"
+      ) {
+        makeFasta(chosenSeqs);
+      } else {
+        makeFasta(chosenSeqs, true);
+      }
     }
   }, [download]);
 
   const handleSubmit = (e) => {
-    console.log("submit");
     e.preventDefault();
     setDownload(true);
   };
