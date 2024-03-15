@@ -41,6 +41,10 @@ function Genome(props) {
           </a>
         </li>
         <li>
+          <b>ICTV Status: </b>
+          {entryData.ictv_status ? "Accepted" : "Not Accepted"}
+        </li>
+        <li>
           <b>Genus:</b> {entryData.genus}
         </li>
         <li>
