@@ -23,18 +23,30 @@ function DownloadByGenusMorph() {
       <h3>Download by genus/morphology</h3>
       <form>
         <label>Download</label>
-        <select onChange={handleChange} name="ictvReference">
+        <select
+          onChange={handleChange}
+          name="ictvReference"
+          value={downloadOptions.ictvReference}
+        >
           <option value="all">all</option>
           <option value="ictv">ICTV accepted</option>
           <option value="wreference">with reference</option>
         </select>
-        <select name="type" onChange={handleChange}>
+        <select
+          name="type"
+          onChange={handleChange}
+          value={downloadOptions.type}
+        >
           <option value="genomes">genomes</option>
           <option value="orfeomes">orfeomes</option>
           <option value="proteomes">proteomes</option>
         </select>
         <label>of</label>
-        <select name="genusMorph" onChange={handleChange}>
+        <select
+          name="genusMorph"
+          onChange={handleChange}
+          value={downloadOptions.genusMorph}
+        >
           <option value="baculoviridae">Baculoviridae</option>
           <option value="A">A</option>
           <option value="AI">AI</option>
@@ -56,47 +68,42 @@ function DownloadByID() {
   const [idsArray, setIdsArray] = useState();
   const [type, setType] = useState("genomes");
   const [DB, setDB] = useState();
-  const [chosenSeqs, setChosenSeqs] = useState();
-
-  console.log(DB);
-
-  useEffect(() => {
-    //get all proteomes
-    if (type === "proteomes" || type === "orfeomes") {
-      getProteome("").then(setDB);
-    } else {
-      mainSearch("").then(setDB);
-    }
-  }, [type]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     //filter DB
     if (idsArray !== undefined) {
-      const chosenSeqsTmp = [];
-      for (const seq of DB) {
-        if (
-          (type === "proteomes" || type === "orfeomes") &&
-          idsArray.indexOf(seq.genome_id) > -1
-        ) {
-          chosenSeqsTmp.push(seq);
-        } else if (type === "genomes" && idsArray.indexOf(seq.id) > -1) {
-          chosenSeqsTmp.push(seq);
-        }
+      setLoading(true);
+      if (type === "genomes") {
+        mainSearch(" ").then(setDB);
+      } else {
+        getProteome(" ").then(setDB);
       }
-      setChosenSeqs(chosenSeqsTmp);
     }
   }, [idsArray]);
 
   useEffect(() => {
     //download fasta
-    if (chosenSeqs !== undefined) {
+    if (DB !== undefined) {
+      const chosenSeqs = [];
+      for (const seq of DB) {
+        if (
+          ((type === "proteomes" || type === "orfeomes") &&
+            idsArray.includes(seq.genome_id)) ||
+          (type === "genomes" && idsArray.includes(seq.id))
+        ) {
+          chosenSeqs.push(seq);
+        }
+      }
+
       if (type === "genomes" || type === "proteomes") {
         makeFasta(chosenSeqs);
       } else {
         makeFasta(chosenSeqs, true);
       }
     }
-  }, [chosenSeqs]);
+    setLoading(false);
+  }, [DB]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -111,16 +118,15 @@ function DownloadByID() {
     setType(e.target.value);
   };
 
-  if (DB === undefined) {
+  if (loading) {
     return <h1>Loading...</h1>;
   }
-
   return (
     <div className={styles.batchDownload}>
       <h3>Download by ID</h3>
       <form onSubmit={handleSubmit}>
         <label>Download</label>
-        <select onChange={handleTypeChange}>
+        <select onChange={handleTypeChange} value={type}>
           <option value="genomes">genomes</option>
           <option value="orfeomes">orfeomes</option>
           <option value="proteomes">proteomes</option>
