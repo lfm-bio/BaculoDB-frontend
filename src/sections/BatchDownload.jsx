@@ -34,54 +34,71 @@ function DownloadByGenusMorph() {
     setGenomeData(genomeInfo);
   }, [DB]);
 
-  useEffect(() => {
+  const filterByTypeFoo = () => {
     const filterByType = [];
+    for (const seq of DB) {
+      switch (downloadOptions.type) {
+        case "genomes":
+          if (seq.entry_type === "Genome") {
+            filterByType.push(seq);
+          }
+          break;
+        case "proteomes":
+        case "orfeomes":
+          if (seq.entry_type === "Protein") {
+            filterByType.push(seq);
+          }
+          break;
+      }
+    }
+    return filterByType;
+  };
+
+  const filterByGenusMorphFoo = (filterByType) => {
     const filterByGenusMorph = [];
+
+    for (const seq of filterByType) {
+      if (
+        (seq.entry_type === "Genome" &&
+          genomeData[seq.id].genus === downloadOptions.genusMorph) ||
+        (seq.entry_type === "Protein" &&
+          genomeData[seq.genome_id].genus === downloadOptions.genusMorph) ||
+        downloadOptions.genusMorph === "baculoviridae"
+      ) {
+        filterByGenusMorph.push(seq);
+      }
+    }
+    return filterByGenusMorph;
+  };
+
+  const filterByIctvRefFoo = (filterByGenusMorph) => {
+    const filterByIctvRef = [];
+
+    for (const seq of filterByGenusMorph) {
+      if (downloadOptions.ictvReference === "all") {
+        filterByIctvRef.push(seq);
+      } else if (downloadOptions.ictvReference === "wreference") {
+        if (
+          (seq.entry_type === "Genome" && genomeData[seq.id].reference) ||
+          (seq.entry_type === "Protein" && genomeData[seq.genome_id].reference)
+        ) {
+          filterByIctvRef.push(seq);
+        }
+      }
+    }
+    return filterByIctvRef;
+  };
+
+  useEffect(() => {
     const filterByIctvRef = [];
 
     if (DB !== undefined && genomeData !== undefined) {
       setDownload(false);
-      for (const seq of DB) {
-        switch (downloadOptions.type) {
-          case "genomes":
-            if (seq.entry_type === "Genome") {
-              filterByType.push(seq);
-            }
-            break;
-          case "proteomes":
-          case "orfeomes":
-            if (seq.entry_type === "Protein") {
-              filterByType.push(seq);
-            }
-            break;
-        }
-      }
 
-      for (const seq of filterByType) {
-        if (
-          (seq.entry_type === "Genome" &&
-            genomeData[seq.id].genus === downloadOptions.genusMorph) ||
-          (seq.entry_type === "Protein" &&
-            genomeData[seq.genome_id].genus === downloadOptions.genusMorph) ||
-          downloadOptions.genusMorph === "baculoviridae"
-        ) {
-          filterByGenusMorph.push(seq);
-        }
-      }
+      const filterByType = filterByTypeFoo();
+      const filterByGenusMorph = filterByGenusMorphFoo(filterByType);
+      const filterByIctvRef = filterByIctvRefFoo(filterByGenusMorph);
 
-      for (const seq of filterByGenusMorph) {
-        if (downloadOptions.ictvReference === "all") {
-          filterByIctvRef.push(seq);
-        } else if (downloadOptions.ictvReference === "wreference") {
-          if (
-            (seq.entry_type === "Genome" && genomeData[seq.id].reference) ||
-            (seq.entry_type === "Protein" &&
-              genomeData[seq.genome_id].reference)
-          ) {
-            filterByIctvRef.push(seq);
-          }
-        }
-      }
       setChosenSeqs(filterByIctvRef);
       console.log(filterByIctvRef);
     }
