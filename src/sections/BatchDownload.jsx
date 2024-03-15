@@ -58,14 +58,30 @@ function DownloadByGenusMorph() {
     const filterByGenusMorph = [];
 
     for (const seq of filterByType) {
-      if (
-        (seq.entry_type === "Genome" &&
-          genomeData[seq.id].genus === downloadOptions.genusMorph) ||
-        (seq.entry_type === "Protein" &&
-          genomeData[seq.genome_id].genus === downloadOptions.genusMorph) ||
-        downloadOptions.genusMorph === "baculoviridae"
-      ) {
+      if (downloadOptions.genusMorph === "baculoviridae") {
         filterByGenusMorph.push(seq);
+      } else if (
+        ["AI", "AII", "B", "G", "D"].indexOf(downloadOptions.genusMorph) > -1
+      ) {
+        if (
+          (seq.entry_type === "Genome" &&
+            genomeData[seq.id].genus === downloadOptions.genusMorph) ||
+          (seq.entry_type === "Protein" &&
+            genomeData[seq.genome_id].genus === downloadOptions.genusMorph)
+        ) {
+          filterByGenusMorph.push(seq);
+        }
+      } else if (downloadOptions.genusMorph === "A") {
+        if (
+          (seq.entry_type === "Genome" &&
+            (genomeData[seq.id].genus === "AI" ||
+              genomeData[seq.id].genus === "AII")) ||
+          (seq.entry_type === "Protein" &&
+            (genomeData[seq.genome_id].genus === "AI" ||
+              genomeData[seq.genome_id].genus === "AII"))
+        ) {
+          filterByGenusMorph.push(seq);
+        }
       }
     }
     return filterByGenusMorph;
@@ -99,7 +115,7 @@ function DownloadByGenusMorph() {
 
   useEffect(() => {
     if (DB !== undefined && genomeData !== undefined) {
-      setDownload(false);
+      // setDownload(false);
 
       const filterByType = filterByTypeFoo();
       const filterByGenusMorph = filterByGenusMorphFoo(filterByType);
@@ -120,8 +136,9 @@ function DownloadByGenusMorph() {
       } else {
         makeFasta(chosenSeqs, true);
       }
+      setDownload(false);
     }
-  }, [download]);
+  }, [download, chosenSeqs]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -136,6 +153,9 @@ function DownloadByGenusMorph() {
     });
   };
 
+  if (download && DB === undefined) {
+    return <h1>Loading...</h1>;
+  }
   return (
     <div className={styles.batchDownload}>
       <h3>Download by genus/morphology</h3>
