@@ -144,7 +144,7 @@ function Baculoviridae() {
               {D.n_prots_min}/{D.n_prots_max}/{D.n_prots_av}
             </td>
           </tr>
-
+          {/* 
           <tr>
             <td>SNPV</td>
             <td>NO-DATA</td>
@@ -159,7 +159,7 @@ function Baculoviridae() {
             <td>NO-DATA</td>
             <td>NO-DATA</td>
             <td>NO-DATA</td>
-          </tr>
+          </tr> */}
         </tbody>
       </table>
     </div>
