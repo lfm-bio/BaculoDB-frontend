@@ -64,7 +64,25 @@ export const getProteome = (genomeID) => {
     const proteome = getFinalArray(proteinResponse);
     return proteome;
   });
+  return searchData;
+};
 
+export const getGenomeBatch = (genus) => {
+  let url = "";
+  if (genus === "A") {
+    url = "genomebatchalpha";
+  } else {
+    url = "genomebatch";
+  }
+  const promGenomes = apiInstance.get(url, {
+    params: {
+      search: genus,
+    },
+  });
+  const searchData = Promise.all([promGenomes]).then((genomeResponse) => {
+    const genomes = getFinalArray(genomeResponse);
+    return genomes;
+  });
   return searchData;
 };
 
