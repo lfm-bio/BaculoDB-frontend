@@ -14,7 +14,6 @@ function DownloadByGenusMorph() {
   console.log(DB);
 
   useEffect(() => {
-    console.log(downloadOptions);
     if (downloadOptions.genusMorph === "baculoviridae") {
       getGenomeBatch().then(setDB); //GEtall
     } else {
