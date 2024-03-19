@@ -1,7 +1,12 @@
 import { useState, useEffect } from "react";
 import styles from "../styles/mainContent.module.css";
 import { makeFasta, removeWhitespace } from "../utils/utils";
-import { getProteome, getGenomeBatch, getProteinBatch } from "../api/dbs.api";
+import {
+  getProteome,
+  getGenomeBatch,
+  getProteinBatch,
+  mainSearch,
+} from "../api/dbs.api";
 
 function DownloadByGenusMorph() {
   const [downloadOptions, setDownloadOptions] = useState({
@@ -121,18 +126,6 @@ function DownloadByID() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    //filter DB
-    if (idsArray !== undefined) {
-      setLoading(true);
-      if (type === "genomes") {
-        mainSearch(" ").then(setDB);
-      } else {
-        getProteome(" ").then(setDB);
-      }
-    }
-  }, [idsArray]);
-
-  useEffect(() => {
     //download fasta
     if (DB !== undefined) {
       const chosenSeqs = [];
@@ -158,6 +151,12 @@ function DownloadByID() {
   const handleSubmit = (e) => {
     e.preventDefault();
     setIdsArray(removeWhitespace(ids.split(",")));
+    setLoading(true);
+    if (type === "genomes") {
+      mainSearch("").then(setDB);
+    } else {
+      getProteome("").then(setDB);
+    }
   };
 
   const handleInputChange = (e) => {
