@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import styles from "../styles/mainContent.module.css";
 import { makeFasta, removeWhitespace } from "../utils/utils";
-import { getProteome, getGenomeBatch } from "../api/dbs.api";
+import { getProteome, getGenomeBatch, getProteinBatch } from "../api/dbs.api";
 
 function DownloadByGenusMorph() {
   const [downloadOptions, setDownloadOptions] = useState({
@@ -11,25 +11,36 @@ function DownloadByGenusMorph() {
   });
   const [DB, setDB] = useState();
   const [download, setDownload] = useState(false);
-  console.log(DB);
 
-  useEffect(() => {
-    if (downloadOptions.genusMorph === "baculoviridae") {
-      getGenomeBatch().then(setDB); //GEtall
-    } else {
-      getGenomeBatch(downloadOptions.genusMorph).then(setDB);
+  const filterDB = () => {
+    const chosenSeqs = [];
+
+    for (const seq of DB) {
+      if (downloadOptions.ictvReference === "all") {
+        chosenSeqs.push(seq);
+      } else if (downloadOptions.ictvReference === "ictv") {
+        if (seq.ictv_status) {
+          chosenSeqs.push(seq);
+        }
+      } else if (downloadOptions.ictvReference === "wreference") {
+        if (seq.reference) {
+          chosenSeqs.push(seq);
+        }
+      }
     }
-  }, [downloadOptions]);
+    return chosenSeqs;
+  };
 
   useEffect(() => {
     if (DB !== undefined && download) {
+      const finalDB = filterDB();
       if (
         downloadOptions.type === "genomes" ||
         downloadOptions.type === "proteomes"
       ) {
-        makeFasta(DB);
+        makeFasta(finalDB);
       } else {
-        makeFasta(DB, true);
+        makeFasta(finalDB, true);
       }
       setDownload(false);
     }
@@ -37,6 +48,12 @@ function DownloadByGenusMorph() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setDB(); // set to undefined so i cant download
+    if (downloadOptions.type === "genomes") {
+      getGenomeBatch(downloadOptions.genusMorph).then(setDB);
+    } else {
+      getProteinBatch(downloadOptions.genusMorph).then(setDB);
+    }
     setDownload(true);
   };
 

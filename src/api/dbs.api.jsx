@@ -74,6 +74,7 @@ export const getGenomeBatch = (genus) => {
   } else {
     url = "genomebatch";
   }
+  genus = genus === "baculoviridae" ? "" : genus; // get all entries
   const promGenomes = apiInstance.get(url, {
     params: {
       search: genus,
@@ -82,6 +83,26 @@ export const getGenomeBatch = (genus) => {
   const searchData = Promise.all([promGenomes]).then((genomeResponse) => {
     const genomes = getFinalArray(genomeResponse);
     return genomes;
+  });
+  return searchData;
+};
+
+export const getProteinBatch = (genus) => {
+  let url = "";
+  if (genus === "A") {
+    url = "proteinbatchalpha";
+  } else {
+    url = "proteinbatch";
+  }
+  genus = genus === "baculoviridae" ? "" : genus; // get all entries
+  const promProteins = apiInstance.get(url, {
+    params: {
+      search: genus,
+    },
+  });
+  const searchData = Promise.all([promProteins]).then((proteinResponse) => {
+    const proteins = getFinalArray(proteinResponse);
+    return proteins;
   });
   return searchData;
 };
