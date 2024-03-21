@@ -4,7 +4,6 @@ import styles from "../styles/mainContent.module.css";
 
 function Baculoviridae() {
   const [entries, setEntries] = useState();
-  console.log(entries);
 
   useEffect(() => {
     getBaculoviridaeTable().then(setEntries);

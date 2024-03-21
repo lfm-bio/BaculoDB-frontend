@@ -118,3 +118,18 @@ export const getBaculoviridaeTable = () => {
 
   return searchData;
 };
+
+export const getOrthologyGroup = (groupName) => {
+  const promOrthologyGroup = apiInstance.get("orthologygroup", {
+    params: {
+      search: groupName,
+    },
+  });
+  const searchData = Promise.all([promOrthologyGroup]).then(
+    (orthologygroupResponse) => {
+      const orthologyGroup = getFinalArray(orthologygroupResponse);
+      return orthologyGroup;
+    }
+  );
+  return searchData;
+};
