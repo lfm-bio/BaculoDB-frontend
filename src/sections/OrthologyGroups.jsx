@@ -35,19 +35,52 @@ function AllOrthologyGroups(props) {
 
 function OrthologyGroups() {
   const [orthologyGroups, setOrthologyGroups] = useState();
+  const [filteredGroups, setFilteredGroups] = useState();
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const handleChange = (e) => {
+    console.log(e.target.value);
+    setSearchQuery(e.target.value);
+  };
 
   useEffect(() => {
     getOrthologyGroup().then(setOrthologyGroups);
   }, []);
 
-  console.log(orthologyGroups);
-  if (orthologyGroups !== undefined) {
-    orthologyGroups.sort((a, b) => b.n_genes - a.n_genes);
+  useEffect(() => {
+    if (orthologyGroups !== undefined) {
+      setFilteredGroups(filterGroups(searchQuery));
+    }
+  }, [orthologyGroups, searchQuery]);
+
+  const filterGroups = (searchQuery) => {
+    const finalGroups = [];
+    for (const group of orthologyGroups) {
+      if (group.name.indexOf(searchQuery) !== -1) {
+        finalGroups.push(group);
+      }
+    }
+    return finalGroups;
+  };
+
+  if (filteredGroups !== undefined) {
+    filteredGroups.sort((a, b) => b.n_genes - a.n_genes);
 
     return (
-      <ul className={styles.searchResult}>
-        <AllOrthologyGroups entries={orthologyGroups} />
-      </ul>
+      <>
+        <form>
+          <input
+            type="text"
+            autoFocus="autofocus"
+            onChange={handleChange}
+            name="query"
+            value={searchQuery}
+          />
+        </form>
+        <ul className={styles.searchResult}>
+          <AllOrthologyGroups entries={filteredGroups} />
+        </ul>
+      </>
     );
   }
   return <h1>Loading..</h1>;
