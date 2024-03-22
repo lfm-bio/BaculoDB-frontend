@@ -6,7 +6,7 @@ import { getOrthologyGroup } from "../api/dbs.api";
 function OrthologyGroup(props) {
   return (
     <div className={styles.searchElement}>
-      <Link to={`../entry/${props.id}`}>
+      <Link to={""}>
         <h3>{props.name}</h3>
       </Link>
       <div className={styles.elementDescrip}>
@@ -39,8 +39,11 @@ function OrthologyGroups() {
   const [searchQuery, setSearchQuery] = useState("");
 
   const handleChange = (e) => {
-    console.log(e.target.value);
     setSearchQuery(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
   };
 
   useEffect(() => {
@@ -68,13 +71,15 @@ function OrthologyGroups() {
 
     return (
       <>
-        <form>
+        <form className={styles.searchBar}>
           <input
             type="text"
             autoFocus="autofocus"
             onChange={handleChange}
+            onSubmit={handleSubmit}
             name="query"
             value={searchQuery}
+            placeholder="Orthology Group Name"
           />
         </form>
         <ul className={styles.searchResult}>
