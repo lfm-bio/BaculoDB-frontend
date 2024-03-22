@@ -10,8 +10,7 @@ function OrthologyGroup(props) {
         <h3>{props.name}</h3>
       </Link>
       <div className={styles.elementDescrip}>
-        <p>Type: Orthology Group</p>
-        <p>Number of Genes: {props.n_genes}</p>
+        <p>Number of Proteins: {props.n_genes}</p>
         <p>Genus Code: {props.genusCode}</p>
       </div>
     </div>

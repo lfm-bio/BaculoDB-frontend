@@ -99,7 +99,7 @@ function Baculoviridae() {
 
           <tr>
             <td>
-              <i>Betabaculovirus/GV</i>
+              <i>Betabaculovirus</i>
             </td>
             <td>{B.n_genomes}</td>
             <td>

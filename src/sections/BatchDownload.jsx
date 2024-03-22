@@ -106,7 +106,7 @@ function DownloadByGenusMorph() {
           <option value="A">A</option>
           <option value="AI">AI</option>
           <option value="AII">AII</option>
-          <option value="B">B / GV</option>
+          <option value="B">B</option>
           <option value="G">G</option>
           <option value="D">D</option>
           {/* <option value="snpv">SNPV</option>
