@@ -5,6 +5,7 @@ function NcRNA(props) {
   console.log(props);
   return (
     <>
+      <h1>NcRNA</h1>
       <ul className={styles.entryData}>
         <li>
           <b>Name: </b>
