@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 function EachNcRNA(props) {
   return (
     <div className={styles.searchElement}>
-      <Link to={""}>
+      <Link to={`../entry/${props.id}`}>
         <h3>{props.name}</h3>
       </Link>
       <div className={styles.elementDescrip}>
@@ -22,6 +22,7 @@ function AllNcRNAs(props) {
     return (
       <li key={index}>
         <EachNcRNA
+          id={result.id}
           name={result.name}
           genome={result.genome_name}
           genome_id={result.genome_id}

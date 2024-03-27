@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { mainSearch } from "../api/dbs.api";
+import { getEntry } from "../api/dbs.api";
 import { useState, useEffect } from "react";
 import Genome from "./entry_types/Genome";
 import Protein from "./entry_types/Protein";
@@ -13,7 +13,7 @@ function Entry() {
   const [entries, setEntries] = useState();
 
   useEffect(() => {
-    mainSearch(id).then(setEntries);
+    getEntry(id).then(setEntries);
   }, [id]);
 
   if (entries === undefined) {
@@ -32,7 +32,7 @@ function Entry() {
       return <Protein entryData={entry} />;
     case "ori":
       return <Ori entryData={entry} />;
-    case "ncrna":
+    case "NcRNA":
       return <NcRNA entryData={entry} />;
     case "regulatoryelement":
       return <RegulatoryElement entryData={entry} />;

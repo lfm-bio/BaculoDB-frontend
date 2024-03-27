@@ -43,6 +43,33 @@ export const mainSearch = (searchQuery) => {
   return searchData;
 };
 
+export const getEntry = (searchQuery) => {
+  const promGenome = apiInstance.get("genome", {
+    params: {
+      search: searchQuery,
+    },
+  });
+  const promProtein = apiInstance.get("protein", {
+    params: {
+      search: searchQuery,
+    },
+  });
+  const promNcrna = apiInstance.get("ncrna", {
+    params: {
+      search: searchQuery,
+    },
+  });
+
+  const searchData = Promise.all([promGenome, promProtein, promNcrna]).then(
+    ([genomeResponse, proteinResponse, ncrnaResponse]) => {
+      const initialArray = [genomeResponse, proteinResponse, ncrnaResponse];
+      const finalArray = getFinalArray(initialArray);
+      return finalArray;
+    }
+  );
+  return searchData;
+};
+
 export const getProteome = (genomeID) => {
   const promProteins = apiInstance.get("proteome", {
     params: {
