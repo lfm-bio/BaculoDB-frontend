@@ -5,17 +5,15 @@ function NcRNA() {
     <>
       <ul className={styles.entryData}>
         <li>Name: </li>
-        <li>ID</li>
         <li>Organism: </li>
         <li>Organism ID</li>
         <li>Lenght (bp): </li>
-        <li>pre-miRNA length: </li>
-        <li>pre-miRNA %GC: </li>
-        <li>pre-miRNA dG: </li>
-        <li>Prs: </li>
-        <li>Ter: </li>
+        <li>Mature miRNA seq: </li>
+        <li>Mature miRNA length: </li>
+        <li>Pre-miRNA seq: </li>
+        <li>Pre-miRNA length: </li>
+        <li>Pre-miRNA dG: </li>
         <li>Reference: </li>
-        <li>Sequence: </li>
       </ul>
     </>
   );

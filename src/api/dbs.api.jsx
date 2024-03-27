@@ -122,3 +122,16 @@ export const getOrthologyGroup = (groupName) => {
   );
   return searchData;
 };
+
+export const getNcrna = (id) => {
+  const promNcrna = apiInstance.get("ncrna", {
+    params: {
+      search: id,
+    },
+  });
+  const searchData = Promise.all([promNcrna]).then((ncrnaResponse) => {
+    const ncrna = getFinalArray(ncrnaResponse);
+    return ncrna;
+  });
+  return searchData;
+};
