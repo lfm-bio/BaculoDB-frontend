@@ -27,9 +27,7 @@ function Buttons() {
         <li>
           <Link to="/regulatoryelements">Regulatory Elements</Link>
         </li>
-        <li>
-          <Link to="/oris">ORIs</Link>
-        </li>
+
         <li>
           <Link to="/ncrna">ncRNA</Link>
         </li>

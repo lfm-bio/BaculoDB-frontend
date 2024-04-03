@@ -103,6 +103,19 @@ export const getProteome = (genomeID) => {
   return searchData;
 };
 
+export const getProteinOrthologyGroup = (groupName) => {
+  const promProteins = apiInstance.get("getproteinorthologygroup", {
+    params: {
+      search: groupName,
+    },
+  });
+  const searchData = Promise.all([promProteins]).then((proteinResponse) => {
+    const proteome = getFinalArray(proteinResponse);
+    return proteome;
+  });
+  return searchData;
+};
+
 export const getGenomeBatch = (genus) => {
   let url = "";
   if (genus === "A") {

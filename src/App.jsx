@@ -8,7 +8,6 @@ import SearchResults from "./components/SearchResults";
 import OrthologyGroups from "./sections/OrthologyGroups";
 import BatchDownload from "./sections/BatchDownload";
 import NcRNA from "./sections/NcRNA";
-import Oris from "./sections/Oris";
 import RegulatoryElements from "./sections/RegulatoryElements";
 import SubcellularLocalization from "./sections/SubcellularLocalization";
 import Entry from "./components/Entry";
@@ -31,7 +30,6 @@ function App() {
             />
             <Route path="/ncrna" element={<NcRNA />} />
             <Route path="/orthologygroups" element={<OrthologyGroups />} />
-            <Route path="/oris" element={<Oris />} />
             <Route
               path="/subcellularlocalization"
               element={<SubcellularLocalization />}

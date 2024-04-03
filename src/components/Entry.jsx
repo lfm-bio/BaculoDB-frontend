@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import Genome from "./entry_types/Genome";
 import Protein from "./entry_types/Protein";
 import NcRNA from "./entry_types/NcRNA";
-import Ori from "./entry_types/Ori";
 import RegulatoryElement from "./entry_types/RegulatoryElement";
 import OrthologyGroup from "./entry_types/OrthologyGroup";
 
@@ -30,8 +29,6 @@ function Entry() {
       return <Genome entryData={entry} />;
     case "Protein":
       return <Protein entryData={entry} />;
-    case "ori":
-      return <Ori entryData={entry} />;
     case "NcRNA":
       return <NcRNA entryData={entry} />;
     case "regulatoryelement":
