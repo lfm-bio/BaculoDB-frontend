@@ -24,10 +24,10 @@ function OrthologyGroup(props) {
           <b>Name:</b> {entryData.name}
         </li>
         <li>
-          <b>N Genes:</b> {entryData.n_genes}
+          <b>Proteins:</b> {entryData.n_genes}
         </li>
         <li>
-          <b>Genus:</b> {entryData.genus_code}
+          <b>Genus Code:</b> {entryData.genus_code}
         </li>
         <li>
           <button
