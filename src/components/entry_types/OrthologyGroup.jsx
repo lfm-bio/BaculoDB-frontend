@@ -20,9 +20,15 @@ function OrthologyGroup(props) {
     <>
       <h1>Orthology Group</h1>
       <ul className={styles.entryData}>
-        <li>Name: {entryData.name}</li>
-        <li>N Genes: {entryData.n_genes}</li>
-        <li>Genus: {entryData.genus_code}</li>
+        <li>
+          <b>Name:</b> {entryData.name}
+        </li>
+        <li>
+          <b>N Genes:</b> {entryData.n_genes}
+        </li>
+        <li>
+          <b>Genus:</b> {entryData.genus_code}
+        </li>
         <li>
           <button
             onClick={() => {
