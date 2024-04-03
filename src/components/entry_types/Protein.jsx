@@ -5,6 +5,7 @@ import { calculateMW } from "../../utils/utils";
 
 function Protein(props) {
   const entryData = props.entryData;
+  console.log(entryData);
 
   return (
     <>
@@ -40,13 +41,14 @@ function Protein(props) {
           <b>MW(kDa):</b> {calculateMW(entryData.seq)}
         </li>
         <li>
-          {entryData.orthology_group_id && <b>Orthology Group: </b>}
+          {entryData.orthology_group_name && <b>Orthology Group: </b>}
           <a
             href={generatePath("../entry/:id", {
-              id: entryData.orthology_group_id,
+              id: entryData.orthology_group_name,
             })}
           >
-            {entryData.orthology_group_id && `${entryData.orthology_group_id}`}
+            {entryData.orthology_group_name &&
+              `${entryData.orthology_group_name}`}
           </a>
         </li>
         <li>

@@ -44,12 +44,12 @@ export const mainSearch = (searchQuery) => {
 };
 
 export const getEntry = (searchQuery) => {
-  const promGenome = apiInstance.get("genome", {
+  const promGenome = apiInstance.get("getgenome", {
     params: {
       search: searchQuery,
     },
   });
-  const promProtein = apiInstance.get("protein", {
+  const promProtein = apiInstance.get("getprotein", {
     params: {
       search: searchQuery,
     },
@@ -59,10 +59,30 @@ export const getEntry = (searchQuery) => {
       search: searchQuery,
     },
   });
+  const promOrthologyGroup = apiInstance.get("orthologygroup", {
+    params: {
+      search: searchQuery,
+    },
+  });
 
-  const searchData = Promise.all([promGenome, promProtein, promNcrna]).then(
-    ([genomeResponse, proteinResponse, ncrnaResponse]) => {
-      const initialArray = [genomeResponse, proteinResponse, ncrnaResponse];
+  const searchData = Promise.all([
+    promGenome,
+    promProtein,
+    promNcrna,
+    promOrthologyGroup,
+  ]).then(
+    ([
+      genomeResponse,
+      proteinResponse,
+      ncrnaResponse,
+      orthologygroupResponse,
+    ]) => {
+      const initialArray = [
+        genomeResponse,
+        proteinResponse,
+        ncrnaResponse,
+        orthologygroupResponse,
+      ];
       const finalArray = getFinalArray(initialArray);
       return finalArray;
     }

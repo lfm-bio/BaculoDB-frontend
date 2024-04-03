@@ -6,7 +6,7 @@ import { getOrthologyGroup } from "../api/dbs.api";
 function OrthologyGroup(props) {
   return (
     <div className={styles.searchElement}>
-      <Link to={""}>
+      <Link to={`../entry/${props.name}`}>
         <h3>{props.name}</h3>
       </Link>
       <div className={styles.elementDescrip}>
