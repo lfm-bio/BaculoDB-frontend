@@ -31,7 +31,7 @@ function Entry() {
       return <Protein entryData={entry} />;
     case "NcRNA":
       return <NcRNA entryData={entry} />;
-    case "regulatoryelement":
+    case "RegulatoryElement":
       return <RegulatoryElement entryData={entry} />;
     case "OrthologyGroup":
       return <OrthologyGroup entryData={entry} />;

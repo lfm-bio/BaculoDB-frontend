@@ -1,14 +1,27 @@
 import styles from "../../styles/mainContent.module.css";
 
-function RegulatoryElement() {
+function RegulatoryElement(props) {
+  const entryData = props.entryData;
+
   return (
     <>
+      <h1>Regulatory Element</h1>
       <ul className={styles.entryData}>
-        <li>ID: </li>
-        <li>Type: </li>
-        <li>Position: </li>
-        <li>Reference: </li>
-        <li>Sequence: </li>
+        <li>
+          <b>Name:</b> {entryData.name}
+        </li>
+        <li>
+          <b>Type:</b> {entryData.re_type}
+        </li>
+        <li>
+          <b>Description:</b> {entryData.description}
+        </li>
+        <li>
+          <b>Reference:</b> {entryData.reference}
+        </li>
+        <li>
+          <b>Sequence:</b> {entryData.seq}
+        </li>
       </ul>
     </>
   );

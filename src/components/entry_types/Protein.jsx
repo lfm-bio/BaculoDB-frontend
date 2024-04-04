@@ -5,7 +5,6 @@ import { calculateMW } from "../../utils/utils";
 
 function Protein(props) {
   const entryData = props.entryData;
-  console.log(entryData);
 
   return (
     <>

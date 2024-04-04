@@ -64,24 +64,32 @@ export const getEntry = (searchQuery) => {
       search: searchQuery,
     },
   });
+  const promRegulatoryElement = apiInstance.get("regulatoryelement", {
+    params: {
+      search: searchQuery,
+    },
+  });
 
   const searchData = Promise.all([
     promGenome,
     promProtein,
     promNcrna,
     promOrthologyGroup,
+    promRegulatoryElement,
   ]).then(
     ([
       genomeResponse,
       proteinResponse,
       ncrnaResponse,
       orthologygroupResponse,
+      regulatoryElementResponse,
     ]) => {
       const initialArray = [
         genomeResponse,
         proteinResponse,
         ncrnaResponse,
         orthologygroupResponse,
+        regulatoryElementResponse,
       ];
       const finalArray = getFinalArray(initialArray);
       return finalArray;
@@ -178,6 +186,21 @@ export const getOrthologyGroup = (groupName) => {
     (orthologygroupResponse) => {
       const orthologyGroup = getFinalArray(orthologygroupResponse);
       return orthologyGroup;
+    }
+  );
+  return searchData;
+};
+
+export const getRegulatoryElements = (elementName) => {
+  const promRegulatoryElement = apiInstance.get("regulatoryelement", {
+    params: {
+      search: elementName,
+    },
+  });
+  const searchData = Promise.all([promRegulatoryElement]).then(
+    (regulatoryElementResponse) => {
+      const regulatoryElement = getFinalArray(regulatoryElementResponse);
+      return regulatoryElement;
     }
   );
   return searchData;
