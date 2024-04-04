@@ -1,8 +1,8 @@
 import styles from "../../styles/mainContent.module.css";
-import { generatePath } from "react-router-dom";
 
 function NcRNA(props) {
   const entryData = props.entryData;
+
   return (
     <>
       <h1>NcRNA</h1>
@@ -15,16 +15,6 @@ function NcRNA(props) {
           <b>Organism: </b>
           {entryData.genome_name}
         </li>
-        {/* <li>
-          <b>Organism ID: </b>
-          <a
-            href={generatePath("../entry/:id", {
-              id: entryData.genome_id,
-            })}
-          >
-            {entryData.genome_id}
-          </a>
-        </li> */}
         <li>
           <b>Mature miRNA seq: </b>
           {entryData.mature_seq}

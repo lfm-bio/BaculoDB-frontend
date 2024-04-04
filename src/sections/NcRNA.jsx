@@ -10,8 +10,7 @@ function EachNcRNA(props) {
         <h3>{props.name}</h3>
       </Link>
       <div className={styles.elementDescrip}>
-        <p>Genome: {props.genome}</p>
-        <p>Genome ID: {props.genome_id}</p>
+        <p>Organism: {props.genome}</p>
       </div>
     </div>
   );
@@ -39,8 +38,6 @@ function NcRNA() {
   useEffect(() => {
     getNcrna().then(setNcrnas);
   }, []);
-
-  console.log(ncrnas);
 
   if (ncrnas === undefined) {
     return <h1>Loading...</h1>;

@@ -8,7 +8,7 @@ function OrthologyGroup(props) {
 
   useEffect(() => {
     getProteinOrthologyGroup(entryData.name).then(setProteins);
-  });
+  }, []);
 
   const entryData = props.entryData;
 

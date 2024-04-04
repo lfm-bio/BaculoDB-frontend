@@ -6,7 +6,6 @@ function RegulatoryElement() {
       <ul className={styles.entryData}>
         <li>ID: </li>
         <li>Type: </li>
-        <li>Temporality: </li>
         <li>Position: </li>
         <li>Reference: </li>
         <li>Sequence: </li>
