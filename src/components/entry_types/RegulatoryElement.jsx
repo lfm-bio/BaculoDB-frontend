@@ -17,10 +17,10 @@ function RegulatoryElement(props) {
           <b>Description:</b> {entryData.description}
         </li>
         <li>
-          <b>Reference:</b> {entryData.reference}
+          <b>Sequence:</b> {entryData.seq}
         </li>
         <li>
-          <b>Sequence:</b> {entryData.seq}
+          <b>Reference:</b> {entryData.reference}
         </li>
       </ul>
     </>
