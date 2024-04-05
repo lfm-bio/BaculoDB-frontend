@@ -20,7 +20,13 @@ function RegulatoryElement(props) {
           <b>Sequence:</b> {entryData.seq}
         </li>
         <li>
-          <b>Reference:</b> {entryData.reference}
+          <b>Reference:</b>{" "}
+          <a
+            href={`https://pubmed.ncbi.nlm.nih.gov/${entryData.reference}`}
+            target="_blank"
+          >
+            {entryData.reference && `${entryData.reference}`}
+          </a>
         </li>
       </ul>
     </>

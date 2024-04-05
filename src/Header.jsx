@@ -47,7 +47,9 @@ function SearchBar() {
   const navigate = useNavigate();
 
   function handleSubmit(event) {
-    navigate(searchQuery);
+    if (searchQuery.length > 1) {
+      navigate(searchQuery);
+    }
   }
 
   function handleSearch(event) {
