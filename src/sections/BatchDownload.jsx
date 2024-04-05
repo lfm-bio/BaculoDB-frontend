@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import styles from "../styles/mainContent.module.css";
-import { makeFasta, removeWhitespace } from "../utils/utils";
+import { makeFasta, removeWhitespaceAndPoint } from "../utils/utils";
 import {
   getProteome,
   getGenomeBatch,
@@ -150,7 +150,7 @@ function DownloadByID() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setIdsArray(removeWhitespace(ids.split(",")));
+    setIdsArray(removeWhitespaceAndPoint(ids.split(",")));
     setLoading(true);
     if (type === "genomes") {
       mainSearch("").then(setDB);

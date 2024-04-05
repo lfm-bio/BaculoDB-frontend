@@ -67,9 +67,9 @@ export const calculateMW = (seq) => {
   return (mw / 1000).toFixed(2); //Da to kDa
 };
 
-export const removeWhitespace = (stringsArray) => {
+export const removeWhitespaceAndPoint = (stringsArray) => {
   const arrayWOWhitespace = stringsArray.map((string) => {
-    return string.trim();
+    return string.slice(0, string.indexOf("."));
   });
   return arrayWOWhitespace;
 };
